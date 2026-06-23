@@ -1427,6 +1427,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .stats-grid {
     grid-template-columns: 1fr;
   }
+
+  /* Stack welcome image sub-boxes on small screens */
+  .welcome-image-specs {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* ─── CSS GRID SYSTEM ────────────────────────────────────── */
@@ -1486,6 +1491,27 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-content: center;
   width: 100%;
   text-align: center;
+}
+
+/* Specific mobile menu CTA overrides to beat descendant selector specificity */
+.mobile-menu a.mobile-menu-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  color: var(--clr-white) !important;
+  background: var(--clr-teal);
+  border-bottom: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  margin-top: 16px;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.mobile-menu a.mobile-menu-cta:hover {
+  background: var(--clr-teal-dark);
+  color: var(--clr-white) !important;
 }
 
 /* Helpers */
@@ -1598,18 +1624,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .product-hero-info {
     text-align: center;
   }
+  .product-quick-tabs { justify-content: center; }
+  .product-hero-actions { justify-content: center; }
 }
 
 @media (max-width: 768px) {
-  .product-quick-tabs { justify-content: center; }
-  .product-hero-actions { justify-content: center; }
-  
   .cta-card-row {
     display: flex;
     flex-direction: column;
     text-align: center;
     padding: 30px 24px;
     gap: 20px;
+  }
+  .cta-card-row > div:last-child {
+    justify-content: center !important;
   }
   .cta-card-row-actions {
     display: flex;
