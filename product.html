@@ -44,8 +44,8 @@
     <section style="background:var(--clr-navy);position:relative;overflow:hidden;" id="overview">
       <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1200');background-size:cover;background-position:center;opacity:0.18;"></div>
       <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,27,84,0.97) 0%,rgba(0,27,84,0.8) 60%,rgba(0,27,84,0.4) 100%);"></div>
-      <div class="product-hero-grid">
-        <div>
+      <div class="grid align-items-center" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:120px var(--container-px) 72px;gap:60px;">
+        <div class="col-6 col-lg-12 product-hero-info">
           <p style="font-family:var(--font-heading);font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-green-lime);margin-bottom:12px;">GLP &amp; GMP Compliant · ISO-7 · BSL-3</p>
           <h1 style="font-family:var(--font-condensed);font-size:clamp(3rem,5vw,4.5rem);font-weight:700;color:white;line-height:1.05;margin-bottom:10px;">ZenNuc™<br>Deco</h1>
           <p style="font-family:var(--font-heading);font-size:0.85rem;font-weight:600;letter-spacing:0.18em;color:var(--clr-teal);text-transform:uppercase;margin-bottom:16px;">Precision. Purity. Performance.</p>
@@ -65,7 +65,7 @@
             <a href="contact.html" class="btn btn-outline-white" id="prod-coa-btn">Request CoA</a>
           </div>
         </div>
-        <div>
+        <div class="col-6 col-lg-12">
           <img src="zennuc_product.png" alt="ZenNuc™ Deco Kit (Solution A & B)" loading="eager" style="width:100%; height:auto; object-fit:contain; border-radius:var(--radius-md); box-shadow:0 24px 64px rgba(0,0,0,0.6);">
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:16px;border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-sm);overflow:hidden;">
             <div style="padding:16px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);">
@@ -294,13 +294,13 @@
           <h2 id="fields-heading">Targeted Fields of Application</h2>
           <div class="section-divider"></div>
         </div>
-        <div class="app-fields-grid animate-on-scroll">
-          <div class="contact-card" id="f-moldiag"><div class="contact-icon">🔬</div><div><h4>Molecular Diagnostics</h4><p>Eliminates cross-contamination across PCR, qPCR, and RT-PCR setups.</p></div></div>
-          <div class="contact-card" id="f-forensic"><div class="contact-icon">🔍</div><div><h4>Forensic Laboratories</h4><p>Ensures absolute clean-slates for DNA-profiling workspaces.</p></div></div>
-          <div class="contact-card" id="f-ngs"><div class="contact-icon">🧠</div><div><h4>Next-Generation Sequencing</h4><p>Safeguards library preparation zones, flowcells, and instruments.</p></div></div>
-          <div class="contact-card" id="f-cleanroom"><div class="contact-icon">🏛️</div><div><h4>Clean Rooms &amp; Pre-amp Zones</h4><p>Maintains high-grade environmental biological control parameters.</p></div></div>
-          <div class="contact-card" id="f-equipment"><div class="contact-icon">⚙️</div><div><h4>Critical Equipment Maintenance</h4><p>Safe for pipettes, glass manifolds, and synthetic workstations.</p></div></div>
-          <div class="contact-card" id="f-clinical"><div class="contact-icon">🏥</div><div><h4>Clinical Diagnostic Labs</h4><p>Validated for high-throughput, regulated clinical environments.</p></div></div>
+        <div class="grid animate-on-scroll" style="gap:16px;">
+          <div class="contact-card col-6 col-md-12" id="f-moldiag"><div class="contact-icon">🔬</div><div><h4>Molecular Diagnostics</h4><p>Eliminates cross-contamination across PCR, qPCR, and RT-PCR setups.</p></div></div>
+          <div class="contact-card col-6 col-md-12" id="f-forensic"><div class="contact-icon">🔍</div><div><h4>Forensic Laboratories</h4><p>Ensures absolute clean-slates for DNA-profiling workspaces.</p></div></div>
+          <div class="contact-card col-6 col-md-12" id="f-ngs"><div class="contact-icon">🧠</div><div><h4>Next-Generation Sequencing</h4><p>Safeguards library preparation zones, flowcells, and instruments.</p></div></div>
+          <div class="contact-card col-6 col-md-12" id="f-cleanroom"><div class="contact-icon">🏛️</div><div><h4>Clean Rooms &amp; Pre-amp Zones</h4><p>Maintains high-grade environmental biological control parameters.</p></div></div>
+          <div class="contact-card col-6 col-md-12" id="f-equipment"><div class="contact-icon">⚙️</div><div><h4>Critical Equipment Maintenance</h4><p>Safe for pipettes, glass manifolds, and synthetic workstations.</p></div></div>
+          <div class="contact-card col-6 col-md-12" id="f-clinical"><div class="contact-icon">🏥</div><div><h4>Clinical Diagnostic Labs</h4><p>Validated for high-throughput, regulated clinical environments.</p></div></div>
         </div>
       </div>
     </section>

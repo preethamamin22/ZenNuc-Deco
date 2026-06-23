@@ -1399,54 +1399,97 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .badges-row { gap: 8px; }
 }
 
-/* ─── CUSTOM RESPONSIVE LAYOUTS ────────────────────────────── */
-
-/* Product Hero Grid */
-.product-hero-grid {
-  position: relative;
-  z-index: 1;
+/* ─── CSS GRID SYSTEM ────────────────────────────────────── */
+.grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 120px var(--container-px) 72px;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
 }
 
-.product-quick-tabs {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
+/* Helpers */
+.align-items-center { align-items: center; }
+
+/* Grid columns (Desktop first / default) */
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* Tablet Overrides */
+@media (max-width: 1024px) {
+  .col-lg-1  { grid-column: span 1; }
+  .col-lg-2  { grid-column: span 2; }
+  .col-lg-3  { grid-column: span 3; }
+  .col-lg-4  { grid-column: span 4; }
+  .col-lg-5  { grid-column: span 5; }
+  .col-lg-6  { grid-column: span 6; }
+  .col-lg-7  { grid-column: span 7; }
+  .col-lg-8  { grid-column: span 8; }
+  .col-lg-9  { grid-column: span 9; }
+  .col-lg-10 { grid-column: span 10; }
+  .col-lg-11 { grid-column: span 11; }
+  .col-lg-12 { grid-column: span 12; }
 }
 
-.product-hero-actions {
+/* Mobile Overrides */
+@media (max-width: 768px) {
+  /* Default all columns to full width on mobile unless explicitly overridden */
+  .grid > [class*="col-"] {
+    grid-column: span 12;
+  }
+  
+  .col-md-1  { grid-column: span 1; }
+  .col-md-2  { grid-column: span 2; }
+  .col-md-3  { grid-column: span 3; }
+  .col-md-4  { grid-column: span 4; }
+  .col-md-5  { grid-column: span 5; }
+  .col-md-6  { grid-column: span 6; }
+  .col-md-7  { grid-column: span 7; }
+  .col-md-8  { grid-column: span 8; }
+  .col-md-9  { grid-column: span 9; }
+  .col-md-10 { grid-column: span 10; }
+  .col-md-11 { grid-column: span 11; }
+  .col-md-12 { grid-column: span 12; }
+}
+
+/* Small mobile Overrides */
+@media (max-width: 576px) {
+  .col-sm-1  { grid-column: span 1; }
+  .col-sm-2  { grid-column: span 2; }
+  .col-sm-3  { grid-column: span 3; }
+  .col-sm-4  { grid-column: span 4; }
+  .col-sm-5  { grid-column: span 5; }
+  .col-sm-6  { grid-column: span 6; }
+  .col-sm-7  { grid-column: span 7; }
+  .col-sm-8  { grid-column: span 8; }
+  .col-sm-9  { grid-column: span 9; }
+  .col-sm-10 { grid-column: span 10; }
+  .col-sm-11 { grid-column: span 11; }
+  .col-sm-12 { grid-column: span 12; }
+}
+
+/* Custom adjustments for sections */
+.product-hero-actions, .product-quick-tabs {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
 }
 
-/* Fields of Application Grid */
-.app-fields-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-/* CTA Card Row */
 .cta-card-row {
   background: var(--clr-off-white);
   border: 1px solid var(--clr-gray-border);
   border-radius: var(--radius-md);
   padding: 40px 48px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 32px;
-  align-items: center;
 }
 
-/* Director Mini Card (About Page) */
 .director-mini-card {
   margin-top: 24px;
   display: flex;
@@ -1465,38 +1508,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-wrap: wrap;
 }
 
-/* Media Queries for Custom Layouts */
 @media (max-width: 1024px) {
-  .product-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding-top: 100px;
-    padding-bottom: 40px;
+  .product-hero-info {
     text-align: center;
   }
 }
 
 @media (max-width: 768px) {
-  .product-quick-tabs {
-    justify-content: center;
-  }
-  .product-hero-actions {
-    justify-content: center;
-  }
-  .app-fields-grid {
-    grid-template-columns: 1fr;
-  }
+  .product-quick-tabs { justify-content: center; }
+  .product-hero-actions { justify-content: center; }
+  
   .cta-card-row {
-    grid-template-columns: 1fr;
     text-align: center;
     padding: 30px 24px;
-    gap: 24px;
   }
-  .cta-card-row > div:last-child {
+  .cta-card-row-actions {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
+    margin-top: 24px;
   }
 }
 
@@ -1510,4 +1541,5 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     justify-content: center;
   }
 }
+
 
