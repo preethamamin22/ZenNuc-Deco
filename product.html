@@ -44,7 +44,7 @@
     <section style="background:var(--clr-navy);position:relative;overflow:hidden;" id="overview">
       <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1200');background-size:cover;background-position:center;opacity:0.18;"></div>
       <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,27,84,0.97) 0%,rgba(0,27,84,0.8) 60%,rgba(0,27,84,0.4) 100%);"></div>
-      <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;padding:120px var(--container-px) 72px;">
+      <div class="product-hero-grid">
         <div>
           <p style="font-family:var(--font-heading);font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-green-lime);margin-bottom:12px;">GLP &amp; GMP Compliant · ISO-7 · BSL-3</p>
           <h1 style="font-family:var(--font-condensed);font-size:clamp(3rem,5vw,4.5rem);font-weight:700;color:white;line-height:1.05;margin-bottom:10px;">ZenNuc™<br>Deco</h1>
@@ -52,7 +52,7 @@
           <p style="font-family:var(--font-source);color:rgba(255,255,255,0.72);font-size:1rem;line-height:1.8;margin-bottom:32px;">Complete Nucleic Acid Destruction Beyond Traditional Surface Cleaners. Dual-reagent Cu²⁺-catalyzed Fenton-like mechanism for absolute amplicon shredding.</p>
 
           <!-- Quick-jump tabs -->
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;">
+          <div class="product-quick-tabs">
             <a href="#specifications" style="font-family:var(--font-heading);font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-sm);color:rgba(255,255,255,0.75);transition:var(--transition);" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Specifications</a>
             <a href="#comparison" style="font-family:var(--font-heading);font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-sm);color:rgba(255,255,255,0.75);transition:var(--transition);" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Comparison</a>
             <a href="#mechanism" style="font-family:var(--font-heading);font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-sm);color:rgba(255,255,255,0.75);transition:var(--transition);" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Mechanism</a>
@@ -60,7 +60,7 @@
             <a href="#faq" style="font-family:var(--font-heading);font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-sm);color:rgba(255,255,255,0.75);transition:var(--transition);" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">FAQs</a>
           </div>
 
-          <div style="display:flex;gap:12px;">
+          <div class="product-hero-actions">
             <a href="contact.html" class="btn btn-primary" id="prod-enquire-btn">Request Information</a>
             <a href="contact.html" class="btn btn-outline-white" id="prod-coa-btn">Request CoA</a>
           </div>
@@ -294,7 +294,7 @@
           <h2 id="fields-heading">Targeted Fields of Application</h2>
           <div class="section-divider"></div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="animate-on-scroll">
+        <div class="app-fields-grid animate-on-scroll">
           <div class="contact-card" id="f-moldiag"><div class="contact-icon">🔬</div><div><h4>Molecular Diagnostics</h4><p>Eliminates cross-contamination across PCR, qPCR, and RT-PCR setups.</p></div></div>
           <div class="contact-card" id="f-forensic"><div class="contact-icon">🔍</div><div><h4>Forensic Laboratories</h4><p>Ensures absolute clean-slates for DNA-profiling workspaces.</p></div></div>
           <div class="contact-card" id="f-ngs"><div class="contact-icon">🧠</div><div><h4>Next-Generation Sequencing</h4><p>Safeguards library preparation zones, flowcells, and instruments.</p></div></div>
