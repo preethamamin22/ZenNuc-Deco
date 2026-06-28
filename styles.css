@@ -1704,6 +1704,28 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .product-btns {
     justify-content: center;
   }
+  
+  /* Fix ALL grid layouts on mobile to span full width */
+  .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+  }
+  .grid > [class*="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Make all specification tables horizontally scrollable on mobile */
+  .spec-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .spec-table th, .spec-table td {
+    min-width: 120px; /* Ensure content doesn't squish too much before scrolling */
+  }
 }
 
 @media (max-width: 480px) {
