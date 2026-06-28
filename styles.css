@@ -1698,4 +1698,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .prod-hero-desc {
     font-size: 0.9rem !important;
   }
+  
+  /* Prevent large inline letter-spacing from breaking layouts, but keep it wide enough to be readable (especially for ALL CAPS text) */
+  [style*="letter-spacing"] {
+    letter-spacing: 0.08em !important;
+  }
+  h1, h2, h3, h4, h5, h6, .section-heading h2 {
+    letter-spacing: 0.02em !important;
+  }
 }
