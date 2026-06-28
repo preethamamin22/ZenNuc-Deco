@@ -1685,6 +1685,25 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .btn {
     width: 100%;
   }
+  /* Stack product entries on mobile to prevent text from being squished */
+  .product-entry {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 16px;
+    gap: 20px;
+    border-bottom: 1px solid var(--clr-gray-border);
+  }
+  .product-entry:nth-child(odd) {
+    border-right: none;
+  }
+  .product-thumb {
+    width: 200px;
+    height: 200px;
+  }
+  .product-btns {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
