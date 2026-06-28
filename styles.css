@@ -1659,4 +1659,43 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 }
 
+/* ─── ADDITIONAL MOBILE OPTIMIZATIONS ─── */
+@media (max-width: 768px) {
+  /* Tighten up new product sections padding */
+  .section {
+    padding: 40px 16px;
+  }
+  /* Ensure images in product grid don't cause overflow */
+  .product-thumb img {
+    max-height: 200px;
+  }
+  /* Reduce heading sizes for smaller screens */
+  .section-heading h2 {
+    font-size: 1.8rem;
+  }
+  /* Ensure field cards stack and have uniform padding */
+  .field-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .feature-card {
+    padding: 24px 20px;
+  }
+  /* Make all primary buttons full width on small mobile */
+  .btn {
+    width: 100%;
+  }
+}
 
+@media (max-width: 480px) {
+  .hero-slide-content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  .hero-slide-content p {
+    font-size: 0.95rem;
+  }
+  .prod-hero-desc {
+    font-size: 0.9rem !important;
+  }
+}
