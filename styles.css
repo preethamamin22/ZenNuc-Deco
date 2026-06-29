@@ -35,7 +35,7 @@
 
   /* Navbar */
   --navbar-h: 100px;
-  --topbar-h: 40px;
+  --topbar-h: 0px;
 
   /* Spacing */
   --section-py: 96px;
@@ -1420,7 +1420,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 @media (max-width: 768px) {
-  :root { --section-py: 52px; --navbar-h: 70px; }
+  :root { --section-py: 52px; --navbar-h: 70px; --topbar-h: 0px; }
+  .topbar { display: none !important; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
   .hero-carousel { height: 420px; }
