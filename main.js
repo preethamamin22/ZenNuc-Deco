@@ -9,10 +9,10 @@
   const navbar = document.getElementById('navbar');
   if (!navbar) return;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+    if (window.scrollY > 40) {
+      navbar.classList.add('sticky');
     } else {
-      navbar.style.boxShadow = 'rgba(0,0,0,0.1) 0 0 15px';
+      navbar.classList.remove('sticky');
     }
   }, { passive: true });
 })();

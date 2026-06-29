@@ -1,59 +1,60 @@
 /* ============================================================
-   ZenNuc™ Deco – Redesigned (BioShields Reference)
+   ZenNuc™ Deco – Redesigned (Molbio Diagnostics Reference)
    Densukia International OPC Pvt. Ltd.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&family=Open+Sans:wght@300;400;600&family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@400;500;600;700&display=swap');
 
 /* ─── CSS Variables ──────────────────────────────────────── */
 :root {
-  /* BioShields-inspired Palette */
-  --clr-navy:       #001b54;
-  --clr-navy-dark:  #001240;
-  --clr-navy-mid:   #002062;
-  --clr-blue-corp:  #0a4aa9;
-  --clr-teal:       #1095bf;
-  --clr-teal-dark:  #0b7fa3;
-  --clr-green:      #0eb755;
-  --clr-green-lime: #a4ff00;
+  /* Molbio-inspired Palette */
+  --clr-navy:       #151C36;
+  --clr-navy-dark:  #0C1021;
+  --clr-navy-mid:   #1A2242;
+  --clr-blue-corp:  #243C78;
+  --clr-teal:       #0A66C2; /* Main Brand Blue */
+  --clr-teal-dark:  #074A8D;
+  --clr-green:      #0D9488;
+  --clr-green-lime: #14B8A6;
   --clr-white:      #ffffff;
-  --clr-off-white:  #f8f9fa;
-  --clr-light-gray: #e9ecef;
-  --clr-gray-500:   #6c757d;
-  --clr-gray-border:#dee2e6;
-  --clr-text:       #212529;
-  --clr-text-muted: #5c5a5a;
-  --clr-black:      #040404;
+  --clr-off-white:  #F9FAFB;
+  --clr-light-gray: #F3F4F6;
+  --clr-gray-500:   #6B7280;
+  --clr-gray-border:#E5E7EB;
+  --clr-text:       #374151;
+  --clr-text-muted: #4B5563;
+  --clr-black:      #111827;
 
   /* Typography */
-  --font-body:      'Montserrat', sans-serif;
-  --font-heading:   'Roboto', sans-serif;
-  --font-condensed: 'Roboto Condensed', sans-serif;
-  --font-archivo:   'Archivo Black', sans-serif;
-  --font-source:    'Source Sans 3', sans-serif;
-  --font-open:      'Open Sans', sans-serif;
+  --font-body:      'Inter', sans-serif;
+  --font-heading:   'Inter Tight', sans-serif;
+  --font-condensed: 'Inter Tight', sans-serif;
+  --font-archivo:   'Inter Tight', sans-serif;
+  --font-source:    'Inter', sans-serif;
+  --font-open:      'Inter', sans-serif;
 
   /* Navbar */
-  --navbar-h: 90px;
+  --navbar-h: 100px;
+  --topbar-h: 40px;
 
   /* Spacing */
-  --section-py: 72px;
-  --container-px: clamp(20px, 5vw, 60px);
+  --section-py: 96px;
+  --container-px: clamp(24px, 6vw, 80px);
 
   /* Borders */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-nav:  rgba(0,0,0,0.1) 0 0 15px;
-  --shadow-btn:  0 5px 12px 4px rgba(160,160,160,0.5);
-  --shadow-card: 0 2px 12px rgba(0,0,0,0.08);
-  --shadow-lg:   0 8px 32px rgba(0,0,0,0.12);
+  --shadow-nav:  0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-btn:  0 4px 14px rgba(10, 102, 194, 0.3);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.06);
+  --shadow-lg:   0 12px 36px rgba(0,0,0,0.1);
 
   /* Transitions */
-  --transition: all 0.25s ease;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* ─── Reset ──────────────────────────────────────────────── */
@@ -66,7 +67,7 @@ body {
   color: var(--clr-text);
   background: var(--clr-white);
   overflow-x: hidden;
-  padding-top: var(--navbar-h);
+  padding-top: 0;
 }
 img { display: block; max-width: 100%; height: auto; }
 a { text-decoration: none; color: inherit; }
@@ -81,18 +82,49 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 0 var(--container-px);
 }
 
+/* ─── TOP BAR ──────────────────────────────────────────────── */
+.topbar {
+  background: var(--clr-navy);
+  color: var(--clr-white);
+  height: var(--topbar-h);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--container-px);
+  font-family: var(--font-source);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.topbar a {
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 20px;
+  transition: var(--transition);
+  text-transform: uppercase;
+}
+.topbar a:hover {
+  color: var(--clr-teal);
+}
+
 /* ─── NAVBAR ─────────────────────────────────────────────── */
 .navbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: absolute; /* Changed from fixed */
+  top: var(--topbar-h); left: 0; right: 0;
   height: var(--navbar-h);
   background: var(--clr-white);
-  box-shadow: var(--shadow-nav);
+  box-shadow: none; /* Shadow applies when sticky */
   z-index: 1000;
   display: flex;
   align-items: center;
   padding: 0 var(--container-px);
   transition: var(--transition);
+}
+
+.navbar.sticky {
+  position: fixed;
+  top: 0;
+  box-shadow: var(--shadow-nav);
+  height: 80px; /* Compress slightly on scroll */
 }
 
 .nav-inner {
@@ -288,9 +320,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-carousel {
   position: relative;
   width: 100%;
-  height: 560px;
+  height: 90vh;
+  min-height: 600px;
   overflow: hidden;
-  background: var(--clr-navy);
+  background: var(--clr-navy-dark);
+  margin-top: calc(var(--navbar-h) + var(--topbar-h));
 }
 .hero-slide {
   position: absolute;
@@ -298,7 +332,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transition: opacity 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .hero-slide.active { opacity: 1; }
 .hero-slide-bg {
@@ -306,15 +340,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   inset: 0;
   background-size: cover;
   background-position: center;
+  transform: scale(1.05);
+  transition: transform 6s linear;
+}
+.hero-slide.active .hero-slide-bg {
+  transform: scale(1);
 }
 .hero-slide-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(0, 27, 84, 0.82) 0%,
-    rgba(0, 27, 84, 0.55) 60%,
-    rgba(0, 27, 84, 0.2) 100%
+    rgba(21, 28, 54, 0.9) 0%,
+    rgba(21, 28, 54, 0.6) 50%,
+    rgba(21, 28, 54, 0.1) 100%
   );
 }
 .hero-slide-content {
@@ -371,6 +410,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: calc(var(--navbar-h) + var(--topbar-h));
 }
 .page-banner-bg {
   position: absolute;

@@ -1,0 +1,8 @@
+{
+  "name": "zennuc",
+  "version": "1.0.0",
+  "description": "ZenNuc Static Site",
+  "scripts": {
+    "dev": "npx serve ."
+  }
+}
