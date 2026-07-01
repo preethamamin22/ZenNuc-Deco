@@ -3,185 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZenNuc™ Products | Technical Specifications & SOP Guide | Densukia International</title>
-  <meta name="description" content="Full technical specifications for ZenNuc™ product range — Deco (nucleic acid decontamination), Grid (industrial floor cleaning), Aura (hand sanitizer), and Hypo (high-purity disinfection).">
+  <title>ZenNuc™ Products | Technical Specifications &amp; SOP Guide | Densukia International</title>
+  <meta name="description" content="Full technical specifications for ZenNuc™ product range — Deco (nucleic acid decontamination), Grid (industrial floor cleaning), Aura (hand sanitizer), Hypo (high-purity disinfection), IPA, and Micro.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Product Tab Navigation */
-    .product-tab-nav {
-      display:flex;
-      gap:0;
-      border-bottom:2px solid var(--clr-gray-border);
-      margin-bottom:48px;
-      overflow-x:auto;
-      flex-wrap:nowrap;
+    /* ========= CATALOGUE THUMBNAIL GRID ========= */
+    .catalogue-hero {
+      background: var(--clr-navy);
+      padding: 80px var(--container-px) 56px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
     }
-    .product-tab-btn {
-      padding:14px 28px;
-      font-family:var(--font-heading);
-      font-size:0.82rem;
-      font-weight:700;
-      letter-spacing:0.06em;
-      text-transform:uppercase;
-      color:var(--clr-gray-500);
-      border:none;
-      background:transparent;
-      cursor:pointer;
-      border-bottom:3px solid transparent;
-      margin-bottom:-2px;
-      white-space:nowrap;
-      transition:all 0.2s ease;
+    .catalogue-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 60% 40%, rgba(0,157,224,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse at 20% 80%, rgba(0,200,150,0.08) 0%, transparent 60%);
+      pointer-events: none;
     }
-    .product-tab-btn:hover { color:var(--clr-navy); }
-    .product-tab-btn.active {
-      color:var(--clr-navy);
-      border-bottom-color:var(--clr-blue-corp);
+    .catalogue-hero-inner { position:relative; z-index:1; max-width:680px; margin:0 auto; }
+    .catalogue-hero-eyebrow {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--clr-teal);
+      margin-bottom: 16px;
+      display: block;
     }
-    .product-section-panel { display:none; }
-    .product-section-panel.active { display:block; }
+    .catalogue-hero h1 {
+      font-family: var(--font-condensed);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .catalogue-hero p {
+      font-family: var(--font-source);
+      font-size: 1rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.8;
+    }
+    .product-grid-section {
+      background: var(--clr-off-white);
+      padding: 64px var(--container-px) 80px;
+    }
+    .product-thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 680px) { .product-thumb-grid { grid-template-columns:1fr; gap:20px; } }
+    .prod-thumb-card {
+      background: var(--clr-white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border: 1px solid var(--clr-gray-border);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.28s cubic-bezier(.22,.68,0,1.2), box-shadow 0.28s ease;
+      cursor: pointer;
+    }
+    .prod-thumb-card:hover { transform:translateY(-6px) scale(1.01); box-shadow:0 16px 48px rgba(0,0,0,0.14); }
+    .prod-thumb-img-wrap { position:relative; overflow:hidden; height:220px; }
+    .prod-thumb-img-wrap img { width:100%; height:100%; object-fit:contain; padding:20px; transition:transform 0.4s ease; }
+    .prod-thumb-card:hover .prod-thumb-img-wrap img { transform:scale(1.05); }
+    .prod-thumb-badge {
+      position:absolute; top:14px; left:14px;
+      font-family:var(--font-heading); font-size:0.65rem; font-weight:700;
+      letter-spacing:0.12em; text-transform:uppercase;
+      padding:5px 10px; border-radius:4px; color:white;
+    }
+    .prod-thumb-body { padding:22px 24px 24px; display:flex; flex-direction:column; flex:1; }
+    .prod-thumb-category { font-family:var(--font-heading); font-size:0.7rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px; }
+    .prod-thumb-name { font-family:var(--font-condensed); font-size:1.6rem; font-weight:700; color:var(--clr-navy); line-height:1.1; margin-bottom:10px; }
+    .prod-thumb-desc { font-family:var(--font-source); font-size:0.88rem; color:var(--clr-text-muted); line-height:1.7; margin-bottom:20px; flex:1; }
+    .prod-thumb-stats { display:flex; gap:16px; margin-bottom:20px; padding:14px 0; border-top:1px solid var(--clr-gray-border); border-bottom:1px solid var(--clr-gray-border); }
+    .prod-thumb-stat { flex:1; text-align:center; }
+    .prod-thumb-stat-val { font-family:var(--font-condensed); font-size:1.1rem; font-weight:700; color:var(--clr-navy); line-height:1; margin-bottom:3px; }
+    .prod-thumb-stat-label { font-family:var(--font-heading); font-size:0.62rem; color:var(--clr-text-muted); letter-spacing:0.06em; text-transform:uppercase; }
+    .know-more-btn {
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      width:100%; padding:13px 20px; border-radius:8px;
+      font-family:var(--font-heading); font-size:0.8rem; font-weight:700;
+      letter-spacing:0.1em; text-transform:uppercase; color:white;
+      border:none; cursor:pointer;
+      transition:opacity 0.2s ease, transform 0.2s ease;
+    }
+    .know-more-btn:hover { opacity:0.88; transform:translateY(-1px); }
+    .know-more-btn svg { transition:transform 0.2s ease; }
+    .know-more-btn:hover svg { transform:translateX(4px); }
 
-    /* Product Hero Banner */
-    .prod-hero {
+    /* ========= DETAIL VIEW ========= */
+    #products-detail { display:none; }
+    #products-detail.visible { display:block; }
+    .product-detail-panel { display:none; }
+    .product-detail-panel.active { display:block; }
+
+    .back-bar {
       background:var(--clr-navy);
-      position:relative;
-      overflow:hidden;
-      padding:72px var(--container-px) 56px;
+      padding:14px var(--container-px);
+      display:flex; align-items:center; gap:8px;
+      position:sticky; top:72px; z-index:100;
+      border-bottom:1px solid rgba(255,255,255,0.08);
     }
-    .prod-hero-grid {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:60px;
-      align-items:center;
-      max-width:1200px;
-      margin:0 auto;
+    .back-btn {
+      display:inline-flex; align-items:center; gap:8px;
+      font-family:var(--font-heading); font-size:0.78rem; font-weight:700;
+      letter-spacing:0.1em; text-transform:uppercase;
+      color:rgba(255,255,255,0.75);
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+      border-radius:6px; padding:8px 16px; cursor:pointer; transition:all 0.2s ease;
     }
-    @media(max-width:900px){.prod-hero-grid{grid-template-columns:1fr;}}
-    .prod-hero h1 {
-      font-family:var(--font-condensed);
-      font-size:clamp(2rem,6vw,3rem);
-      font-weight:700;
-      color:white;
-      line-height:1.1;
-      margin-bottom:8px;
-    }
-    .prod-hero-sub {
-      font-family:var(--font-heading);
-      font-size:0.85rem;
-      font-weight:600;
-      letter-spacing:0.16em;
-      color:var(--clr-teal);
-      text-transform:uppercase;
-      margin-bottom:16px;
-    }
-    .prod-hero-desc {
-      font-family:var(--font-source);
-      color:rgba(255,255,255,0.7);
-      font-size:0.97rem;
-      line-height:1.8;
-      margin-bottom:28px;
-    }
-    .prod-hero-badge {
-      display:inline-block;
-      font-family:var(--font-heading);
-      font-size:0.7rem;
-      font-weight:700;
-      letter-spacing:0.14em;
-      text-transform:uppercase;
-      color:var(--clr-green-lime);
-      margin-bottom:14px;
-    }
-    .spec-table {
-      width:100%;
-      border-collapse:collapse;
-      font-family:var(--font-source);
-      font-size:0.9rem;
-      border-radius:var(--radius-md);
-      overflow:hidden;
-      box-shadow:var(--shadow-lg);
-    }
-    .spec-table th {
-      background:var(--clr-navy);
-      color:white;
-      padding:13px 18px;
-      text-align:left;
-      font-family:var(--font-heading);
-      font-size:0.78rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:0.08em;
-    }
-    .spec-table td {
-      padding:12px 18px;
-      border-bottom:1px solid var(--clr-gray-border);
-      color:var(--clr-text-body);
-      vertical-align:top;
-    }
+    .back-btn:hover { background:rgba(255,255,255,0.15); color:white; }
+    .back-bar-title { font-family:var(--font-heading); font-size:0.8rem; font-weight:600; color:rgba(255,255,255,0.45); letter-spacing:0.08em; }
+    .back-bar-title span { color:rgba(255,255,255,0.85); font-weight:700; }
+
+    .prod-hero { background:var(--clr-navy); position:relative; overflow:hidden; padding:72px var(--container-px) 56px; }
+    .prod-hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; max-width:1200px; margin:0 auto; }
+    @media(max-width:900px){ .prod-hero-grid { grid-template-columns:1fr; } }
+    .prod-hero h1 { font-family:var(--font-condensed); font-size:clamp(2rem,6vw,3rem); font-weight:700; color:white; line-height:1.1; margin-bottom:8px; }
+    .prod-hero-sub { font-family:var(--font-heading); font-size:0.85rem; font-weight:600; letter-spacing:0.16em; color:var(--clr-teal); text-transform:uppercase; margin-bottom:16px; }
+    .prod-hero-desc { font-family:var(--font-source); color:rgba(255,255,255,0.7); font-size:0.97rem; line-height:1.8; margin-bottom:28px; }
+    .prod-hero-badge { display:inline-block; font-family:var(--font-heading); font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--clr-green-lime); margin-bottom:14px; }
+    .spec-table { width:100%; border-collapse:collapse; font-family:var(--font-source); font-size:0.9rem; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-lg); }
+    .spec-table th { background:var(--clr-navy); color:white; padding:13px 18px; text-align:left; font-family:var(--font-heading); font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; }
+    .spec-table td { padding:12px 18px; border-bottom:1px solid var(--clr-gray-border); color:var(--clr-text-body); vertical-align:top; }
     .spec-table tr:last-child td { border-bottom:none; }
     .spec-table tr:nth-child(even) td { background:var(--clr-off-white); }
-    .spec-table td:first-child {
-      font-family:var(--font-heading);
-      font-weight:700;
-      color:var(--clr-navy);
-      white-space:nowrap;
-    }
-    .perf-list {
-      list-style:none;
-      padding:0;
-      margin:0;
-    }
-    .perf-list li {
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
-      padding:16px 0;
-      border-bottom:1px solid var(--clr-gray-border);
-      font-family:var(--font-source);
-      font-size:0.93rem;
-      color:var(--clr-text-body);
-      line-height:1.7;
-    }
+    .spec-table td:first-child { font-family:var(--font-heading); font-weight:700; color:var(--clr-navy); white-space:nowrap; }
+    .perf-list { list-style:none; padding:0; margin:0; }
+    .perf-list li { display:flex; gap:14px; align-items:flex-start; padding:16px 0; border-bottom:1px solid var(--clr-gray-border); font-family:var(--font-source); font-size:0.93rem; color:var(--clr-text-body); line-height:1.7; }
     .perf-list li:last-child { border-bottom:none; }
     .perf-list li strong { color:var(--clr-navy); }
-    .perf-list li::before {
-      content:"●";
-      color:var(--clr-teal);
-      font-size:0.7rem;
-      flex-shrink:0;
-      margin-top:6px;
-    }
-    .field-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:16px;
-    }
-    .field-card {
-      background:var(--clr-white);
-      border:1px solid var(--clr-gray-border);
-      border-radius:var(--radius-sm);
-      padding:20px;
-      font-family:var(--font-source);
-    }
-    .field-card h5 {
-      font-family:var(--font-heading);
-      font-size:0.88rem;
-      font-weight:700;
-      color:var(--clr-navy);
-      margin-bottom:6px;
-    }
-    .field-card p {
-      font-size:0.85rem;
-      color:var(--clr-text-muted);
-      line-height:1.65;
-    }
+    .perf-list li::before { content:"●"; color:var(--clr-teal); font-size:0.7rem; flex-shrink:0; margin-top:6px; }
+    .field-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+    .field-card { background:var(--clr-white); border:1px solid var(--clr-gray-border); border-radius:var(--radius-sm); padding:20px; font-family:var(--font-source); }
+    .field-card h5 { font-family:var(--font-heading); font-size:0.88rem; font-weight:700; color:var(--clr-navy); margin-bottom:6px; }
+    .field-card p { font-size:0.85rem; color:var(--clr-text-muted); line-height:1.65; }
+    .prod-nav-pills { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+    .prod-nav-pill { display:inline-block; font-family:var(--font-heading); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:7px 14px; border:1px solid rgba(255,255,255,0.2); border-radius:var(--radius-sm); color:rgba(255,255,255,0.75); transition:var(--transition); text-decoration:none; }
+    .prod-nav-pill:hover { background:rgba(255,255,255,0.1); color:white; }
   </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
-  <!-- ===== NAVBAR ===== -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
@@ -211,519 +189,567 @@
 
   <main>
 
-    <!-- ======================================================= -->
-    <!-- PRODUCT: ZENNUC DECO                                    -->
-    <!-- ======================================================= -->
-    <section id="deco">
-      <!-- PRODUCT HERO -->
-      <div class="prod-hero">
-        <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1200');background-size:cover;background-position:center;opacity:0.15;"></div>
-        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,27,84,0.97) 0%,rgba(0,27,84,0.8) 60%,rgba(0,27,84,0.4) 100%);"></div>
-        <div class="prod-hero-grid" style="position:relative;z-index:1;">
-          <div>
-            <span class="prod-hero-badge">GLP &amp; GMP Compliant · ISO-7 · BSL-3</span>
-            <h1>ZenNuc™<br>Deco</h1>
-            <p class="prod-hero-sub">Precision. Purity. Performance.</p>
-            <p class="prod-hero-desc">Complete Nucleic Acid Destruction Beyond Traditional Surface Cleaners. Dual-reagent Cu²⁺-catalyzed Fenton-like mechanism for absolute amplicon shredding.</p>
-            <div class="product-quick-tabs">
-              <a href="#deco-specs" style="font-family:var(--font-heading);font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-sm);color:rgba(255,255,255,0.75);transition:var(--transition);" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Specifications</a>
-              <a href="#deco-comparison" style="font-family:var(--font-heading);font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-sm);color:rgba(255,255,255,0.75);transition:var(--transition);" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Comparison</a>
-              <a href="#deco-sop" style="font-family:var(--font-heading);font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-sm);color:rgba(255,255,255,0.75);transition:var(--transition);" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">SOP</a>
-              <a href="#deco-faq" style="font-family:var(--font-heading);font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:7px 14px;border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius-sm);color:rgba(255,255,255,0.75);transition:var(--transition);" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">FAQs</a>
-            </div>
-            <div class="product-hero-actions" style="margin-top:24px;">
-              <a href="contact.html" class="btn btn-primary" id="prod-enquire-btn">Request Information</a>
-              <a href="contact.html" class="btn btn-outline-white" id="prod-coa-btn">Request CoA</a>
-            </div>
-          </div>
-          <div>
-            <img src="zennuc_product.png" alt="ZenNuc™ Deco Kit (Solution A &amp; B)" loading="eager" style="width:100%; height:auto; object-fit:contain; border-radius:var(--radius-md); box-shadow:0 24px 64px rgba(0,0,0,0.6);">
-            <div class="product-spec-grid">
-              <div>
-                <div style="font-family:var(--font-condensed);font-size:1.3rem;font-weight:700;color:var(--clr-green-lime);">100%</div>
-                <div style="font-size:0.7rem;color:rgba(255,255,255,0.45);margin-top:3px;">Amplicon Shredding</div>
-              </div>
-              <div>
-                <div style="font-family:var(--font-condensed);font-size:1.3rem;font-weight:700;color:var(--clr-green-lime);">2–5 min</div>
-                <div style="font-size:0.7rem;color:rgba(255,255,255,0.45);margin-top:3px;">Contact Time</div>
-              </div>
-              <div>
-                <div style="font-family:var(--font-condensed);font-size:1.3rem;font-weight:700;color:var(--clr-green-lime);">250 mL × 2</div>
-                <div style="font-size:0.7rem;color:rgba(255,255,255,0.45);margin-top:3px;">Kit Volume</div>
-              </div>
-            </div>
-          </div>
+    <!-- ===== CATALOGUE VIEW ===== -->
+    <div id="products-catalogue">
+      <div class="catalogue-hero">
+        <div class="catalogue-hero-inner">
+          <span class="catalogue-hero-eyebrow">ZenNuc™ Product Range</span>
+          <h1>Scientific Precision.<br>Industrial Strength.</h1>
+          <p>Explore our full range of advanced biological and chemical solutions engineered for critical environments — from GLP-grade laboratories to heavy-duty industrial facilities.</p>
         </div>
       </div>
+      <div class="product-grid-section">
+        <div class="product-thumb-grid">
 
-      <!-- SPECIFICATIONS -->
-      <section class="section section-white" id="deco-specs" aria-labelledby="spec-heading">
-        <div class="container">
-          <div class="section-heading animate-on-scroll">
-            <h2 id="spec-heading">Kit Formulation &amp; Technical Specifications</h2>
-            <div class="section-divider"></div>
-            <p>ZenNuc™ Deco is supplied as a matched-pair kit of two precisely formulated solutions designed for sequential application.</p>
-          </div>
-          <div class="solution-cards animate-on-scroll">
-            <div class="solution-card meta" id="sol-a-card">
-              <div class="solution-badge">Solution A</div>
-              <h3>Deco Meta</h3>
-              <div class="spec-row"><div class="spec-label">Net Volume</div><div class="spec-value">250 mL</div></div>
-              <div class="spec-row"><div class="spec-label">Composition</div><div class="spec-value">Copper Sulfate (CuSO₄) · 2-Propanol (Isopropyl Alcohol)</div></div>
-              <div class="spec-row"><div class="spec-label">Application Step</div><div class="spec-value">Step 1 — Apply First</div></div>
-              <div class="spec-row"><div class="spec-label">Mechanism Role</div><div class="spec-desc">Disrupts protective protein shells and outer cellular membranes, preparing exposed nucleic acids for catalytic degradation. Delivers localised copper ions to the targeted biological grid, destabilising structural capsid envelopes.</div></div>
+          <!-- DECO -->
+          <div class="prod-thumb-card" onclick="showProduct('deco')" id="card-deco">
+            <div class="prod-thumb-img-wrap" style="background:linear-gradient(135deg,#001b54,#002a80);">
+              <span class="prod-thumb-badge" style="background:rgba(0,157,224,0.85);">GLP · GMP · BSL-3</span>
+              <img src="zennuc_product.png" alt="ZenNuc™ Deco" loading="lazy">
             </div>
-            <div class="solution-card rox" id="sol-b-card">
-              <div class="solution-badge">Solution B</div>
-              <h3>Deco Rox</h3>
-              <div class="spec-row"><div class="spec-label">Net Volume</div><div class="spec-value">250 mL</div></div>
-              <div class="spec-row"><div class="spec-label">Composition</div><div class="spec-value">Advanced Hydrogen Peroxide (H₂O₂)</div></div>
-              <div class="spec-row"><div class="spec-label">Application Step</div><div class="spec-value">Step 2 — Apply Immediately After Solution A</div></div>
-              <div class="spec-row"><div class="spec-label">Mechanism Role</div><div class="spec-desc">Drives the core copper-catalyzed oxidation cascade to yield free radicals that systematically cleave phosphodiester bonds. Initiates a rapid Fenton-like reaction cascade yielding powerful hydroxyl radicals.</div></div>
+            <div class="prod-thumb-body">
+              <span class="prod-thumb-category" style="color:var(--clr-blue-corp);">Nucleic Acid Decontamination</span>
+              <div class="prod-thumb-name">ZenNuc™ Deco</div>
+              <p class="prod-thumb-desc">Dual-reagent Cu²⁺-catalyzed Fenton-like mechanism for absolute amplicon shredding. Complete nucleic acid destruction beyond traditional surface cleaners.</p>
+              <div class="prod-thumb-stats">
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">100%</div><div class="prod-thumb-stat-label">Amplicon Kill</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">2–5 min</div><div class="prod-thumb-stat-label">Contact Time</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">250mL×2</div><div class="prod-thumb-stat-label">Kit Volume</div></div>
+              </div>
+              <button class="know-more-btn" style="background:linear-gradient(135deg,#001b54,#0059b3);">
+                Know More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- PERFORMANCE COMPARISON -->
-      <section class="section section-light" id="deco-comparison" aria-labelledby="comp-heading">
-        <div class="container">
-          <div class="section-heading animate-on-scroll">
-            <h2 id="comp-heading">Performance Comparison Matrix</h2>
-            <div class="section-divider"></div>
-            <p>An objective head-to-head comparison across five critical performance parameters.</p>
+          <!-- GRID -->
+          <div class="prod-thumb-card" onclick="showProduct('grid')" id="card-grid">
+            <div class="prod-thumb-img-wrap" style="background:linear-gradient(135deg,#0f1f0f,#1a3a1a);">
+              <span class="prod-thumb-badge" style="background:rgba(34,120,34,0.85);">Industrial Floor</span>
+              <img src="zennuc_grid.png" alt="ZenNuc™ Grid" loading="lazy">
+            </div>
+            <div class="prod-thumb-body">
+              <span class="prod-thumb-category" style="color:#2a8a2a;">Industrial Cleaning</span>
+              <div class="prod-thumb-name">ZenNuc™ Grid</div>
+              <p class="prod-thumb-desc">Specialized industrial floor cleaning solution engineered to harmonize advanced cleaning efficiency with heavy-duty structural performance.</p>
+              <div class="prod-thumb-stats">
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">Heavy</div><div class="prod-thumb-stat-label">Duty Grade</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">RTU</div><div class="prod-thumb-stat-label">Format</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">Industrial</div><div class="prod-thumb-stat-label">Application</div></div>
+              </div>
+              <button class="know-more-btn" style="background:linear-gradient(135deg,#0f2e0f,#1c6b1c);">
+                Know More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
-          <div class="comp-table-wrap animate-on-scroll" style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);">
-            <table class="comp-table" aria-label="Performance comparison">
-              <thead>
-                <tr>
-                  <th style="width:28%;">Performance Metric</th>
-                  <th class="col-std">Standard Single-Bottle Cleaners</th>
-                  <th class="col-zn">ZenNuc™ Deco Dual System</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Primary Mechanism</td><td class="col-std">Simple physical precipitation or unstable oxidation</td><td class="col-zn">✓ Cu²⁺-catalyzed advanced peroxide breakdown</td></tr>
-                <tr><td>Amplicon Degradation</td><td class="col-std">Incomplete; leaves small templates intact</td><td class="col-zn">✓ Absolute reduction to non-amplifiable fragments</td></tr>
-                <tr><td>Shelf Stability</td><td class="col-std">Diminishes rapidly over time on shelf</td><td class="col-zn">✓ Maximum potency sustained until application</td></tr>
-                <tr><td>Surface Compatibility</td><td class="col-std">Highly corrosive (high sodium hypochlorite)</td><td class="col-zn">✓ Gentle on modern polymers and stainless steel</td></tr>
-                <tr><td>Visual Activation Cue</td><td class="col-std">None</td><td class="col-zn">✓ Blue-green tint confirms catalytic action</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
 
-      <!-- SOP WORKFLOW -->
-      <section class="section section-white" id="deco-sop" aria-labelledby="sop-heading">
-        <div class="container">
-          <div class="section-heading animate-on-scroll">
-            <h2 id="sop-heading">Standard Operating Procedure (SOP) Workflow</h2>
-            <div class="section-divider"></div>
-            <p>For consistent validation within GLP-regulated environments, follow the certified sequential decontamination workflow outlined below.</p>
+          <!-- AURA -->
+          <div class="prod-thumb-card" onclick="showProduct('aura')" id="card-aura">
+            <div class="prod-thumb-img-wrap" style="background:linear-gradient(135deg,#0a2a35,#0e4a5e);">
+              <span class="prod-thumb-badge" style="background:rgba(0,180,210,0.85);">Bio-Defense</span>
+              <img src="zennuc_aura.png" alt="ZenNuc™ Aura" loading="lazy">
+            </div>
+            <div class="prod-thumb-body">
+              <span class="prod-thumb-category" style="color:#0099bb;">Hand Sanitizer</span>
+              <div class="prod-thumb-name">ZenNuc™ Aura</div>
+              <p class="prod-thumb-desc">Next-generation bio-defense hand sanitizer delivering ≥99.999% Bio-Burden Log Reduction within 15 seconds. MNC-grade hygiene standard.</p>
+              <div class="prod-thumb-stats">
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">≥99.999%</div><div class="prod-thumb-stat-label">Log Reduction</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">15 sec</div><div class="prod-thumb-stat-label">Contact Time</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">500 mL</div><div class="prod-thumb-stat-label">Volume</div></div>
+              </div>
+              <button class="know-more-btn" style="background:linear-gradient(135deg,#0a2a35,#0e6a8a);">
+                Know More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
-          <div class="sop-grid animate-on-scroll">
-            <div class="sop-step" id="sop-prep"><div class="sop-num" style="border-color:var(--clr-blue-corp);color:var(--clr-blue-corp);">1</div><h4>Preparation</h4><p>Clear target surfaces. Don standard PPE including <strong>nitrile gloves, lab coat, and safety eyewear</strong> before beginning the procedure.</p></div>
-            <div class="sop-step" id="sop-act"><div class="sop-num">2</div><h4>Activation</h4><p>Uniformly spray <strong>Solution A (Deco Meta)</strong>, then follow <em>immediately</em> with <strong>Solution B (Deco Rox)</strong>. Sequential order is critical to the reaction.</p></div>
-            <div class="sop-step" id="sop-inc"><div class="sop-num" style="border-color:var(--clr-green);color:var(--clr-green);">3</div><h4>Incubation</h4><p>Allow contact time of <strong>2–5 minutes</strong>. A faint blue-green tint indicates chemical activation. Do not disturb during this phase.</p></div>
-            <div class="sop-step" id="sop-fin"><div class="sop-num" style="border-color:var(--clr-navy);color:var(--clr-navy);">4</div><h4>Finalization</h4><p>Wipe thoroughly using a <strong>lint-free tissue</strong>. Rinse with DI water or 70% Ethanol, then air dry. Surface is now fully decontaminated.</p></div>
-          </div>
-        </div>
-      </section>
 
-      <!-- SAFETY -->
-      <section class="section section-light" id="deco-safety" aria-labelledby="safety-heading">
-        <div class="container">
-          <div class="section-heading animate-on-scroll">
-            <h2 id="safety-heading">Global Safety &amp; Regulatory Compliance</h2>
-            <div class="section-divider"></div>
+          <!-- HYPO -->
+          <div class="prod-thumb-card" onclick="showProduct('hypo')" id="card-hypo">
+            <div class="prod-thumb-img-wrap" style="background:linear-gradient(135deg,#0a1628,#0e2244);">
+              <span class="prod-thumb-badge" style="background:rgba(30,80,180,0.85);">High-Purity</span>
+              <img src="zennuc_hypo.png" alt="ZenNuc™ Hypo" loading="lazy">
+            </div>
+            <div class="prod-thumb-body">
+              <span class="prod-thumb-category" style="color:#2255bb;">Disinfection Matrix</span>
+              <div class="prod-thumb-name">ZenNuc™ Hypo</div>
+              <p class="prod-thumb-desc">Gold standard in high-purity, stabilized hypochlorite technology — maintaining exceptional free available chlorine profile via a powerful oxidative pathway.</p>
+              <div class="prod-thumb-stats">
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">Stabilized</div><div class="prod-thumb-stat-label">Formula</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">1000 mL</div><div class="prod-thumb-stat-label">Volume</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">Broad</div><div class="prod-thumb-stat-label">Spectrum</div></div>
+              </div>
+              <button class="know-more-btn" style="background:linear-gradient(135deg,#0a1628,#1234aa);">
+                Know More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
-          <div class="animate-on-scroll" style="background:var(--clr-white);border:1px solid var(--clr-gray-border);border-left:4px solid var(--clr-green);border-radius:var(--radius-sm);padding:24px 28px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start;">
-            <span style="font-size:1.5rem;min-width:32px;">✅</span>
+
+          <!-- IPA -->
+          <div class="prod-thumb-card" onclick="showProduct('ipa')" id="card-ipa">
+            <div class="prod-thumb-img-wrap" style="background:linear-gradient(135deg,#1a1400,#3a2e00);">
+              <span class="prod-thumb-badge" style="background:rgba(180,130,0,0.85);">ISO Certified</span>
+              <img src="zennuc_ipa.png" alt="ZenNuc™ IPA" loading="lazy">
+            </div>
+            <div class="prod-thumb-body">
+              <span class="prod-thumb-category" style="color:#b08000;">Surface Sterilization</span>
+              <div class="prod-thumb-name">ZenNuc™ IPA</div>
+              <p class="prod-thumb-desc">Ultra-pure, ultra-filtered 70% isopropyl alcohol formulation for rapid, residue-free microbial kill on hard surfaces. Dries instantly without streaks.</p>
+              <div class="prod-thumb-stats">
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">70%</div><div class="prod-thumb-stat-label">IPA Purity</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">250 mL</div><div class="prod-thumb-stat-label">Volume</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">0%</div><div class="prod-thumb-stat-label">Residue</div></div>
+              </div>
+              <button class="know-more-btn" style="background:linear-gradient(135deg,#1a1400,#8b6400);">
+                Know More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- MICRO -->
+          <div class="prod-thumb-card" onclick="showProduct('micro')" id="card-micro">
+            <div class="prod-thumb-img-wrap" style="background:linear-gradient(135deg,#001a2e,#002d4a);">
+              <span class="prod-thumb-badge" style="background:rgba(0,150,180,0.85);">Precision Lab</span>
+              <img src="zennuc_micro.png" alt="ZenNuc™ Micro" loading="lazy">
+            </div>
+            <div class="prod-thumb-body">
+              <span class="prod-thumb-category" style="color:#0088aa;">Instrument Cleaner</span>
+              <div class="prod-thumb-name">ZenNuc™ Micro</div>
+              <p class="prod-thumb-desc">Advanced, micro-filtered decontamination matrix optimized for micro-surfaces, automated instrumentation, and medical laboratory gear.</p>
+              <div class="prod-thumb-stats">
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">Sub-µm</div><div class="prod-thumb-stat-label">Filtration</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">50–250mL</div><div class="prod-thumb-stat-label">Options</div></div>
+                <div class="prod-thumb-stat"><div class="prod-thumb-stat-val">Pharma</div><div class="prod-thumb-stat-label">Grade</div></div>
+              </div>
+              <button class="know-more-btn" style="background:linear-gradient(135deg,#001a2e,#005577);">
+                Know More <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /#products-catalogue -->
+
+    <!-- ===== DETAIL VIEW ===== -->
+    <div id="products-detail">
+
+      <!-- Sticky Back Bar -->
+      <div class="back-bar">
+        <button class="back-btn" onclick="showCatalogue()" id="back-to-catalogue-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          All Products
+        </button>
+        <span class="back-bar-title">Products / <span id="back-bar-product-name">—</span></span>
+      </div>
+
+      <!-- DECO DETAIL -->
+      <div class="product-detail-panel" id="detail-deco">
+        <div class="prod-hero">
+          <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=1200');background-size:cover;background-position:center;opacity:0.15;"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,27,84,0.97) 0%,rgba(0,27,84,0.8) 60%,rgba(0,27,84,0.4) 100%);"></div>
+          <div class="prod-hero-grid" style="position:relative;z-index:1;">
             <div>
-              <h4 style="font-family:var(--font-heading);font-size:0.95rem;font-weight:700;color:var(--clr-navy);margin-bottom:8px;">GLP/GMP Infrastructure Alignment</h4>
-              <p style="font-family:var(--font-source);font-size:0.9rem;color:var(--clr-text-muted);line-height:1.75;">Every batch of ZenNuc™ Deco undergoes extensive verification and is accompanied by a full <strong>Certificate of Analysis (CoA)</strong>. The residue-free finalization ensures complete safety when operating within certified ISO cleanrooms and high-containment Biosafety Level (BSL) workspaces.</p>
+              <span class="prod-hero-badge">GLP &amp; GMP Compliant · ISO-7 · BSL-3</span>
+              <h1>ZenNuc™<br>Deco</h1>
+              <p class="prod-hero-sub">Precision. Purity. Performance.</p>
+              <p class="prod-hero-desc">Complete Nucleic Acid Destruction Beyond Traditional Surface Cleaners. Dual-reagent Cu²⁺-catalyzed Fenton-like mechanism for absolute amplicon shredding.</p>
+              <div class="prod-nav-pills">
+                <a href="#deco-specs" class="prod-nav-pill">Specifications</a>
+                <a href="#deco-comparison" class="prod-nav-pill">Comparison</a>
+                <a href="#deco-sop" class="prod-nav-pill">SOP</a>
+                <a href="#deco-faq" class="prod-nav-pill">FAQs</a>
+              </div>
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary" id="prod-enquire-btn">Request Information</a>
+                <a href="contact.html" class="btn btn-outline-white" id="prod-coa-btn">Request CoA</a>
+              </div>
+            </div>
+            <div>
+              <img src="zennuc_product.png" alt="ZenNuc™ Deco Kit" loading="eager" style="width:100%;height:auto;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 24px 64px rgba(0,0,0,0.6);">
+              <div class="product-spec-grid">
+                <div><div style="font-family:var(--font-condensed);font-size:1.3rem;font-weight:700;color:var(--clr-green-lime);">100%</div><div style="font-size:0.7rem;color:rgba(255,255,255,0.45);margin-top:3px;">Amplicon Shredding</div></div>
+                <div><div style="font-family:var(--font-condensed);font-size:1.3rem;font-weight:700;color:var(--clr-green-lime);">2–5 min</div><div style="font-size:0.7rem;color:rgba(255,255,255,0.45);margin-top:3px;">Contact Time</div></div>
+                <div><div style="font-family:var(--font-condensed);font-size:1.3rem;font-weight:700;color:var(--clr-green-lime);">250 mL × 2</div><div style="font-size:0.7rem;color:rgba(255,255,255,0.45);margin-top:3px;">Kit Volume</div></div>
+              </div>
             </div>
           </div>
-          <div class="animate-on-scroll">
-            <div class="safety-alert info" id="safety-ppe"><div class="alert-icon">🧤</div><div><h4>PPE Requirement</h4><p>Always wear proper protective gloves, laboratory attire, and eye/face protection when handling ZenNuc™ Deco components.</p></div></div>
-            <div class="safety-alert warning" id="safety-fire"><div class="alert-icon">🔥</div><div><h4>Flammability Warning — Solution A</h4><p>Solution A contains Isopropanol; keep away from open flames, high heat sources, or sparks at all times during use and storage.</p></div></div>
-            <div class="safety-alert danger" id="safety-storage"><div class="alert-icon">🌡️</div><div><h4>Storage Protocols — Solution B</h4><p>Store strictly at ambient room temperature in a cool, dark place. Do <strong>not</strong> decant Solution B (Deco Rox) into unshaded or clear secondary containers — light exposure triggers premature peroxide degradation.</p></div></div>
+        </div>
+        <section class="section section-white" id="deco-specs">
+          <div class="container">
+            <div class="section-heading animate-on-scroll">
+              <h2>Kit Formulation &amp; Technical Specifications</h2>
+              <div class="section-divider"></div>
+              <p>ZenNuc™ Deco is supplied as a matched-pair kit of two precisely formulated solutions designed for sequential application.</p>
+            </div>
+            <div class="solution-cards animate-on-scroll">
+              <div class="solution-card meta" id="sol-a-card">
+                <div class="solution-badge">Solution A</div>
+                <h3>Deco Meta</h3>
+                <div class="spec-row"><div class="spec-label">Net Volume</div><div class="spec-value">250 mL</div></div>
+                <div class="spec-row"><div class="spec-label">Composition</div><div class="spec-value">Copper Sulfate (CuSO₄) · 2-Propanol (Isopropyl Alcohol)</div></div>
+                <div class="spec-row"><div class="spec-label">Application Step</div><div class="spec-value">Step 1 — Apply First</div></div>
+                <div class="spec-row"><div class="spec-label">Mechanism Role</div><div class="spec-desc">Disrupts protective protein shells and outer cellular membranes, preparing exposed nucleic acids for catalytic degradation. Delivers localised copper ions to the targeted biological grid, destabilising structural capsid envelopes.</div></div>
+              </div>
+              <div class="solution-card rox" id="sol-b-card">
+                <div class="solution-badge">Solution B</div>
+                <h3>Deco Rox</h3>
+                <div class="spec-row"><div class="spec-label">Net Volume</div><div class="spec-value">250 mL</div></div>
+                <div class="spec-row"><div class="spec-label">Composition</div><div class="spec-value">Advanced Hydrogen Peroxide (H₂O₂)</div></div>
+                <div class="spec-row"><div class="spec-label">Application Step</div><div class="spec-value">Step 2 — Apply Immediately After Solution A</div></div>
+                <div class="spec-row"><div class="spec-label">Mechanism Role</div><div class="spec-desc">Drives the core copper-catalyzed oxidation cascade to yield free radicals that systematically cleave phosphodiester bonds. Initiates a rapid Fenton-like reaction cascade yielding powerful hydroxyl radicals.</div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section section-light" id="deco-comparison">
+          <div class="container">
+            <div class="section-heading animate-on-scroll">
+              <h2>Performance Comparison Matrix</h2><div class="section-divider"></div>
+              <p>An objective head-to-head comparison across five critical performance parameters.</p>
+            </div>
+            <div class="comp-table-wrap animate-on-scroll" style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);">
+              <table class="comp-table">
+                <thead><tr><th style="width:28%;">Performance Metric</th><th class="col-std">Standard Single-Bottle Cleaners</th><th class="col-zn">ZenNuc™ Deco Dual System</th></tr></thead>
+                <tbody>
+                  <tr><td>Primary Mechanism</td><td class="col-std">Simple physical precipitation or unstable oxidation</td><td class="col-zn">✓ Cu²⁺-catalyzed advanced peroxide breakdown</td></tr>
+                  <tr><td>Amplicon Degradation</td><td class="col-std">Incomplete; leaves small templates intact</td><td class="col-zn">✓ Absolute reduction to non-amplifiable fragments</td></tr>
+                  <tr><td>Shelf Stability</td><td class="col-std">Diminishes rapidly over time on shelf</td><td class="col-zn">✓ Maximum potency sustained until application</td></tr>
+                  <tr><td>Surface Compatibility</td><td class="col-std">Highly corrosive (high sodium hypochlorite)</td><td class="col-zn">✓ Gentle on modern polymers and stainless steel</td></tr>
+                  <tr><td>Visual Activation Cue</td><td class="col-std">None</td><td class="col-zn">✓ Blue-green tint confirms catalytic action</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <section class="section section-white" id="deco-sop">
+          <div class="container">
+            <div class="section-heading animate-on-scroll">
+              <h2>Standard Operating Procedure (SOP) Workflow</h2><div class="section-divider"></div>
+              <p>For consistent validation within GLP-regulated environments, follow the certified sequential decontamination workflow outlined below.</p>
+            </div>
+            <div class="sop-grid animate-on-scroll">
+              <div class="sop-step" id="sop-prep"><div class="sop-num" style="border-color:var(--clr-blue-corp);color:var(--clr-blue-corp);">1</div><h4>Preparation</h4><p>Clear target surfaces. Don standard PPE including <strong>nitrile gloves, lab coat, and safety eyewear</strong> before beginning the procedure.</p></div>
+              <div class="sop-step" id="sop-act"><div class="sop-num">2</div><h4>Activation</h4><p>Uniformly spray <strong>Solution A (Deco Meta)</strong>, then follow <em>immediately</em> with <strong>Solution B (Deco Rox)</strong>. Sequential order is critical to the reaction.</p></div>
+              <div class="sop-step" id="sop-inc"><div class="sop-num" style="border-color:var(--clr-green);color:var(--clr-green);">3</div><h4>Incubation</h4><p>Allow contact time of <strong>2–5 minutes</strong>. A faint blue-green tint indicates chemical activation. Do not disturb during this phase.</p></div>
+              <div class="sop-step" id="sop-fin"><div class="sop-num" style="border-color:var(--clr-navy);color:var(--clr-navy);">4</div><h4>Finalization</h4><p>Wipe thoroughly using a <strong>lint-free tissue</strong>. Rinse with DI water or 70% Ethanol, then air dry. Surface is now fully decontaminated.</p></div>
+            </div>
+          </div>
+        </section>
+        <section class="section section-light" id="deco-safety">
+          <div class="container">
+            <div class="section-heading animate-on-scroll"><h2>Global Safety &amp; Regulatory Compliance</h2><div class="section-divider"></div></div>
+            <div class="animate-on-scroll" style="background:var(--clr-white);border:1px solid var(--clr-gray-border);border-left:4px solid var(--clr-green);border-radius:var(--radius-sm);padding:24px 28px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start;">
+              <span style="font-size:1.5rem;min-width:32px;">✅</span>
+              <div>
+                <h4 style="font-family:var(--font-heading);font-size:0.95rem;font-weight:700;color:var(--clr-navy);margin-bottom:8px;">GLP/GMP Infrastructure Alignment</h4>
+                <p style="font-family:var(--font-source);font-size:0.9rem;color:var(--clr-text-muted);line-height:1.75;">Every batch of ZenNuc™ Deco undergoes extensive verification and is accompanied by a full <strong>Certificate of Analysis (CoA)</strong>.</p>
+              </div>
+            </div>
+            <div class="animate-on-scroll">
+              <div class="safety-alert info" id="safety-ppe"><div class="alert-icon">🧤</div><div><h4>PPE Requirement</h4><p>Always wear proper protective gloves, laboratory attire, and eye/face protection when handling ZenNuc™ Deco components.</p></div></div>
+              <div class="safety-alert warning" id="safety-fire"><div class="alert-icon">🔥</div><div><h4>Flammability Warning — Solution A</h4><p>Solution A contains Isopropanol; keep away from open flames, high heat sources, or sparks at all times during use and storage.</p></div></div>
+              <div class="safety-alert danger" id="safety-storage"><div class="alert-icon">🌡️</div><div><h4>Storage Protocols — Solution B</h4><p>Store strictly at ambient room temperature in a cool, dark place. Do <strong>not</strong> decant Solution B into unshaded or clear secondary containers.</p></div></div>
+            </div>
+          </div>
+        </section>
+        <section class="section section-white" id="deco-faq">
+          <div class="container">
+            <div class="section-heading animate-on-scroll"><h2>Scientific FAQs</h2><div class="section-divider"></div><p>Technical answers to the most common laboratory enquiries about ZenNuc™ Deco.</p></div>
+            <div class="faq-list animate-on-scroll">
+              <div class="faq-item" id="faq-1"><div class="faq-question">What makes ZenNuc™ Deco more effective than standard single-bottle decontaminants?<div class="faq-icon">+</div></div><div class="faq-answer"><p>Single-bottle formulations suffer from continuous self-interaction of active ingredients, causing rapid shelf-degradation. ZenNuc™ Deco's dual-reagent system isolates Deco Meta and Deco Rox until the exact point of surface application, delivering a Cu²⁺-catalyzed Fenton-like reaction cascade with powerful hydroxyl radicals.</p></div></div>
+              <div class="faq-item" id="faq-2"><div class="faq-question">Is ZenNuc™ Deco safe on PCR instruments and sensitive analytical equipment?<div class="faq-icon">+</div></div><div class="faq-answer"><p>Yes. ZenNuc™ Deco is formulated as a non-corrosive system, safe on modern workspace polymers, glass, and alloy surfaces. Unlike traditional sodium hypochlorite-based cleaners, ZenNuc™ Deco is gentle on PCR machines, biosafety cabinets, laminar flow hoods, pipettes, glass manifolds, and synthetic workstations.</p></div></div>
+              <div class="faq-item" id="faq-3"><div class="faq-question">What is the required contact time for effective decontamination?<div class="faq-icon">+</div></div><div class="faq-answer"><p>The validated contact time is <strong>2 to 5 minutes</strong>. After applying Solution A followed immediately by Solution B, allow the mixture to remain on the surface undisturbed for this period.</p></div></div>
+              <div class="faq-item" id="faq-4"><div class="faq-question">What does the blue-green colour change indicate?<div class="faq-icon">+</div></div><div class="faq-answer"><p>The faint blue-green tint is a built-in visual activation indicator confirming the active degradation reaction is ongoing. It is generated by the copper-catalyzed peroxide cascade when Solution A and Solution B combine.</p></div></div>
+              <div class="faq-item" id="faq-5"><div class="faq-question">Does every batch come with a Certificate of Analysis (CoA)?<div class="faq-icon">+</div></div><div class="faq-answer"><p>Yes. Every batch of ZenNuc™ Deco undergoes extensive verification at our Mirjole M.I.D.C. manufacturing facility and is accompanied by a full Certificate of Analysis (CoA).</p></div></div>
+            </div>
+          </div>
+        </section>
+      </div><!-- /detail-deco -->
+
+      <!-- GRID DETAIL -->
+      <div class="product-detail-panel" id="detail-grid">
+        <div class="prod-hero" style="background:linear-gradient(135deg,#0f1f0f,#1a3a1a);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(15,31,15,0.97) 0%,rgba(15,31,15,0.75) 60%,rgba(15,31,15,0.4) 100%);"></div>
+          <div class="prod-hero-grid" style="position:relative;z-index:1;">
+            <div>
+              <span class="prod-hero-badge" style="color:#a3e635;">Industrial Floor Cleaning Solution · Heavy-Duty Performance</span>
+              <h1>ZenNuc™<br>Grid</h1>
+              <p class="prod-hero-sub" style="color:#4ade80;">Efficiency-Driven · Structural Authority</p>
+              <p class="prod-hero-desc">ZenNuc™ Grid is a specialized industrial floor cleaning solution engineered to harmonize advanced cleaning efficiency with heavy-duty structural performance.</p>
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary" id="grid-enquire-btn">Request Information</a>
+                <a href="contact.html" class="btn btn-outline-white" id="grid-quote-btn">Get a Quote</a>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;">
+              <img src="zennuc_grid.png" alt="ZenNuc™ Grid" loading="eager" style="width:100%;max-width:480px;height:auto;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 24px 64px rgba(0,0,0,0.5);">
+            </div>
+          </div>
+        </div>
+        <section class="section section-white">
+          <div class="container">
+            <div class="section-heading animate-on-scroll"><h2>Product Description</h2><div class="section-divider"></div></div>
+            <div class="grid grid-gap-48 align-items-start">
+              <div class="col-6 col-lg-12 animate-on-scroll">
+                <img src="zennuc_grid.png" alt="ZenNuc™ Grid product" loading="lazy" style="width:100%;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);margin-bottom:24px;">
+                <p style="font-family:var(--font-source);font-size:1rem;line-height:1.8;color:var(--clr-text-body);">ZenNuc™ Grid is a specialized industrial floor cleaning solution engineered to harmonize advanced cleaning efficiency with heavy-duty structural performance.</p>
+              </div>
+              <div class="col-6 col-lg-12 animate-on-scroll">
+                <h3 style="font-family:var(--font-condensed);font-size:1.2rem;color:var(--clr-navy);margin-bottom:16px;">Market Application</h3>
+                <ul class="perf-list">
+                  <li><span><strong>Industrial Facilities:</strong> Designed to withstand the rigors of high-traffic warehouse and factory floors.</span></li>
+                  <li><span><strong>Large-Scale Sanitation:</strong> Provides an authoritative cleaning solution for environments requiring consistent, heavy-duty maintenance standards.</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Performance Benefits</h2><div class="section-divider"></div></div>
+            <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);" class="animate-on-scroll">
+              <table class="spec-table">
+                <thead><tr><th>Feature</th><th>Benefit</th></tr></thead>
+                <tbody>
+                  <tr><td>Efficiency-Driven</td><td>Reduces downtime by optimizing cleaning speed.</td></tr>
+                  <tr><td>Heavy-Duty Build</td><td>Handles industrial-grade grime and debris with structural reliability.</td></tr>
+                  <tr><td>Streamlined Workflow</td><td>Integrates seamlessly into existing industrial maintenance protocols.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div><!-- /detail-grid -->
+
+      <!-- AURA DETAIL -->
+      <div class="product-detail-panel" id="detail-aura">
+        <div class="prod-hero" style="background:linear-gradient(135deg,#0a2a35,#0e4a5e);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,42,53,0.97) 0%,rgba(10,42,53,0.75) 60%,rgba(10,42,53,0.4) 100%);"></div>
+          <div class="prod-hero-grid" style="position:relative;z-index:1;">
+            <div>
+              <span class="prod-hero-badge" style="color:#67e8f9;">Next-Generation Bio-Defense Hand Sanitizer · MNC-Grade Hygiene Standard</span>
+              <h1>ZenNuc™<br>Aura</h1>
+              <p class="prod-hero-sub" style="color:#22d3ee;">Ultra-Pure · Broad-Spectrum · Residue-Free</p>
+              <p class="prod-hero-desc">ZenNuc™ Aura is engineered to meet the stringent demands of healthcare professionals and industrial operators alike — delivering ≥99.999% Bio-Burden Log Reduction within 15 seconds.</p>
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary" id="aura-enquire-btn">Request Information</a>
+                <a href="contact.html" class="btn btn-outline-white" id="aura-quote-btn">Get a Quote</a>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;">
+              <img src="zennuc_aura.png" alt="ZenNuc™ Aura" loading="eager" style="width:100%;max-width:420px;height:auto;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 24px 64px rgba(0,0,0,0.5);">
+            </div>
+          </div>
+        </div>
+        <section class="section section-white">
+          <div class="container">
+            <div class="animate-on-scroll" style="text-align:center;margin-bottom:40px;"><img src="zennuc_aura.png" alt="ZenNuc™ Aura" loading="lazy" style="max-width:360px;width:100%;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);"></div>
+            <div class="section-heading animate-on-scroll"><h2>Technical Specifications</h2><div class="section-divider"></div></div>
+            <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);" class="animate-on-scroll">
+              <table class="spec-table">
+                <thead><tr><th>Specification Metric</th><th>Product Parameter Details</th></tr></thead>
+                <tbody>
+                  <tr><td>System Format</td><td>Ready-to-Use (RTU) Dispensing Matrix</td></tr>
+                  <tr><td>Net Volume</td><td>500 mL Ergonomic Spray / Pump Unit</td></tr>
+                  <tr><td>Efficacy Profile</td><td>≥ 99.999% Bio-Burden Log Reduction within 15 seconds</td></tr>
+                  <tr><td>Dermal Compatibility</td><td>Infused with Pharmaceutical-Grade Humectants &amp; Lipid Restorers</td></tr>
+                  <tr><td>Residue Index</td><td>100% Volatile; Zero sticky film or post-drying tackiness</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Elite Performance Features</h2><div class="section-divider"></div></div>
+            <div class="features-grid animate-on-scroll">
+              <div class="feature-card delay-1"><div class="feature-icon">🦠</div><h4>Broad-Spectrum Efficacy</h4><p>Achieves rapid log-reduction against transient microflora, enveloped viruses, and fungi.</p></div>
+              <div class="feature-card delay-2"><div class="feature-icon">🛡️</div><h4>Advanced Dermal Shield</h4><p>Actively preserves skin moisture barriers to prevent occupational contact dermatitis during high-frequency use.</p></div>
+              <div class="feature-card delay-3"><div class="feature-icon">⚡</div><h4>Residue-Free Fast Drying</h4><p>Evaporates cleanly to allow immediate and seamless donning of gloves.</p></div>
+              <div class="feature-card delay-1"><div class="feature-icon">✅</div><h4>SOP-Validated Purity</h4><p>Completely free from artificial fragrances, dyes, and harsh common allergens.</p></div>
+            </div>
+            <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Fields of Application</h2><div class="section-divider"></div></div>
+            <div class="field-grid animate-on-scroll">
+              <div class="field-card"><h5>🏥 Clinical &amp; Healthcare Facilities</h5><p>Pre-procedural hand antisepsis in diagnostic labs, clean zones, and critical care units.</p></div>
+              <div class="field-card"><h5>🔬 Cleanrooms &amp; Controlled Environments</h5><p>Essential hand hygiene protocols prior to gowning in ISO-certified manufacturing environments.</p></div>
+              <div class="field-card"><h5>🍽️ Pharmaceutical &amp; Food Processing</h5><p>Critical intervention points to maintain strict bio-burden control on active processing lines.</p></div>
+              <div class="field-card"><h5>🏢 Corporate Infrastructure</h5><p>Enterprise-wide high-frequency deployment to safeguard workspace health and operational continuity.</p></div>
+            </div>
+          </div>
+        </section>
+      </div><!-- /detail-aura -->
+
+      <!-- HYPO DETAIL -->
+      <div class="product-detail-panel" id="detail-hypo">
+        <div class="prod-hero" style="background:linear-gradient(135deg,#0a1628,#0e2244);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,22,40,0.97) 0%,rgba(10,22,40,0.75) 60%,rgba(10,22,40,0.4) 100%);"></div>
+          <div class="prod-hero-grid" style="position:relative;z-index:1;">
+            <div>
+              <span class="prod-hero-badge" style="color:#93c5fd;">High-Purity Disinfection &amp; Oxidation Matrix · Advanced Biofilm Eradication</span>
+              <h1>ZenNuc™<br>Hypo</h1>
+              <p class="prod-hero-sub" style="color:#60a5fa;">Stabilized · High-Velocity · Broad-Spectrum</p>
+              <p class="prod-hero-desc">ZenNuc™ Hypo represents the gold standard in high-purity, stabilized hypochlorite technology — maintaining an exceptional free available chlorine profile via a powerful oxidative pathway.</p>
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary" id="hypo-enquire-btn">Request Information</a>
+                <a href="contact.html" class="btn btn-outline-white" id="hypo-quote-btn">Get a Quote</a>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;">
+              <img src="zennuc_hypo.png" alt="ZenNuc™ Hypo" loading="eager" style="width:100%;max-width:420px;height:auto;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 24px 64px rgba(0,0,0,0.5);">
+            </div>
+          </div>
+        </div>
+        <section class="section section-white">
+          <div class="container">
+            <div class="animate-on-scroll" style="text-align:center;margin-bottom:40px;"><img src="zennuc_hypo.png" alt="ZenNuc™ Hypo" loading="lazy" style="max-width:360px;width:100%;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);"></div>
+            <div class="section-heading animate-on-scroll"><h2>Technical Specifications</h2><div class="section-divider"></div></div>
+            <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);" class="animate-on-scroll">
+              <table class="spec-table">
+                <thead><tr><th>Specification Metric</th><th>Product Parameter Details</th></tr></thead>
+                <tbody>
+                  <tr><td>System Format</td><td>Stabilized Liquid Concentrate</td></tr>
+                  <tr><td>Net Volume</td><td>1000 mL Heavy-Duty Shaded Container</td></tr>
+                  <tr><td>Primary Mechanism</td><td>High-velocity hypochlorite oxidative cascade</td></tr>
+                  <tr><td>Biofilm Penetration</td><td>Active shearing of Extracellular Polymeric Substances (EPS)</td></tr>
+                  <tr><td>Storage Protocol</td><td>Ambient room temperature; store in original shaded container</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Elite Performance Features</h2><div class="section-divider"></div></div>
+            <div class="features-grid animate-on-scroll">
+              <div class="feature-card delay-1"><div class="feature-icon">⚡</div><h4>Stabilized Oxidative Power</h4><p>Formulated to resist thermal and photolytic breakdown, ensuring reliable active chlorine PPM delivery at point of use.</p></div>
+              <div class="feature-card delay-2"><div class="feature-icon">🔬</div><h4>Deep Biofilm Penetration</h4><p>Shears through protective layer structures to fully neutralize embedded bacterial colonies via EPS disruption.</p></div>
+              <div class="feature-card delay-3"><div class="feature-icon">🦠</div><h4>Broad-Spectrum Efficacy</h4><p>Delivers high-level disinfection against vegetative bacteria, viral particles, and fungal spores.</p></div>
+              <div class="feature-card delay-1"><div class="feature-icon">✅</div><h4>Clean Surface Performance</h4><p>Formulated to optimize surface wetting and maximize biocidal impact across all infrastructure materials.</p></div>
+            </div>
+            <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Fields of Application</h2><div class="section-divider"></div></div>
+            <div class="field-grid animate-on-scroll">
+              <div class="field-card"><h5>💧 Advanced Water Treatment</h5><p>Bio-fouling control, algae mitigation, and continuous disinfection in industrial cooling loops.</p></div>
+              <div class="field-card"><h5>🏭 Hard Surface Decontamination</h5><p>Deep sanitization of floors, structural walls, and manufacturing equipment in production facilities.</p></div>
+              <div class="field-card"><h5>🔧 Clean-in-Place (CIP) Systems</h5><p>Disinfection of internal pipelines, high-capacity holding vessels, and automated filling loops.</p></div>
+              <div class="field-card"><h5>🌿 Environmental Bio-Burden Control</h5><p>Rapid containment and absolute neutralization of large-scale environmental biological spills.</p></div>
+            </div>
+          </div>
+        </section>
+      </div><!-- /detail-hypo -->
+
+      <!-- IPA DETAIL -->
+      <div class="product-detail-panel" id="detail-ipa">
+        <div class="prod-hero" style="background:linear-gradient(135deg,#1a1400,#3a2e00);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(26,20,0,0.97) 0%,rgba(26,20,0,0.75) 60%,rgba(26,20,0,0.4) 100%);"></div>
+          <div class="prod-hero-grid" style="position:relative;z-index:1;">
+            <div>
+              <span class="prod-hero-badge" style="color:#fde68a;">High-Purity 70% Isopropanol Solution · Premium Surface Sterilization System</span>
+              <h1>ZenNuc™<br>IPA</h1>
+              <p class="prod-hero-sub" style="color:#fbbf24;">Precision. Purity. Performance.</p>
+              <p class="prod-hero-desc">An ultra-pure, ultra-filtered isopropyl alcohol formulation for rapid, residue-free microbial kill on hard surfaces. Dries instantly without streaks or chemical residue.</p>
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary" id="ipa-enquire-btn">Request Information</a>
+                <a href="contact.html" class="btn btn-outline-white" id="ipa-quote-btn">Get a Quote</a>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;">
+              <img src="zennuc_ipa.png" alt="ZenNuc™ IPA" loading="eager" style="width:100%;max-width:420px;height:auto;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 24px 64px rgba(0,0,0,0.5);">
+            </div>
+          </div>
+        </div>
+        <section class="section section-white">
+          <div class="container">
+            <div class="animate-on-scroll" style="text-align:center;margin-bottom:40px;"><img src="zennuc_ipa.png" alt="ZenNuc™ IPA" loading="lazy" style="max-width:360px;width:100%;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);"></div>
+            <div class="section-heading animate-on-scroll"><h2>Product Description</h2><div class="section-divider"></div></div>
+            <p class="animate-on-scroll" style="font-family:var(--font-source);font-size:1rem;line-height:1.85;color:var(--clr-text-body);margin-bottom:40px;">Controlled manufacturing areas, medical equipment surfaces, and high-purity laboratory workstations require relentless sterilization protocols. ZenNuc™ IPA is an ultra-pure, ultra-filtered isopropyl alcohol formulation developed to perform rapid, residue-free microbial kill on hard surfaces, drying instantly without streaks or chemical residue.</p>
+            <div class="section-heading animate-on-scroll"><h2>Technical Specifications</h2><div class="section-divider"></div></div>
+            <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);" class="animate-on-scroll">
+              <table class="spec-table">
+                <thead><tr><th>Specification Metric</th><th>Product Parameter Details</th></tr></thead>
+                <tbody>
+                  <tr><td>System Format</td><td>High-Purity 70% Isopropanol Sterilization Fluid</td></tr>
+                  <tr><td>Net Volume</td><td>250 mL Precision Fine-Mist Spray Unit</td></tr>
+                  <tr><td>Primary Mechanism</td><td>Cellular dehydration and rapid protein denaturation kinetics</td></tr>
+                  <tr><td>Evaporation Index</td><td>Fast-drying formula; 100% volatile with zero film formation</td></tr>
+                  <tr><td>Validation Standard</td><td>Certified for ISO Cleanrooms &amp; GLP-regulated environments</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Elite Performance Features</h2><div class="section-divider"></div></div>
+            <div class="features-grid animate-on-scroll">
+              <div class="feature-card delay-1"><div class="feature-icon">⚡</div><h4>Instant Structural Kill</h4><p>Actively disrupts cell wall integrity for fast, high-efficiency sterilization.</p></div>
+              <div class="feature-card delay-2"><div class="feature-icon">✨</div><h4>Streak-Free Volatility</h4><p>Leaves absolutely no chemical residue, allowing safe processing of delicate optics.</p></div>
+              <div class="feature-card delay-3"><div class="feature-icon">💧</div><h4>Optimized Wetting Properties</h4><p>Spreads evenly across metallic, polymer, and glass cleanroom infrastructure.</p></div>
+              <div class="feature-card delay-1"><div class="feature-icon">🔌</div><h4>Electronic Compatibility</h4><p>Highly effective for deep cleaning sensitive clean-room equipment and tools.</p></div>
+            </div>
+            <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Fields of Application</h2><div class="section-divider"></div></div>
+            <div class="field-grid animate-on-scroll">
+              <div class="field-card"><h5>🔧 Cleanroom Tool Maintenance</h5><p>Pre-and-post run sanitization of structural instrumentation and mechanical assemblies.</p></div>
+              <div class="field-card"><h5>🏭 Hard Surface Decontamination</h5><p>Spray application over workbench tables, stainless steel panels, and transfer hatches.</p></div>
+              <div class="field-card"><h5>🧤 Glove and Gown Protocols</h5><p>Supplemental spray step during progression through cleanroom anterooms.</p></div>
+            </div>
+          </div>
+        </section>
+      </div><!-- /detail-ipa -->
+
+      <!-- MICRO DETAIL -->
+      <div class="product-detail-panel" id="detail-micro">
+        <div class="prod-hero" style="background:linear-gradient(135deg,#001a2e,#002d4a);">
+          <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,26,46,0.97) 0%,rgba(0,26,46,0.75) 60%,rgba(0,26,46,0.4) 100%);"></div>
+          <div class="prod-hero-grid" style="position:relative;z-index:1;">
+            <div>
+              <span class="prod-hero-badge" style="color:#67e8f9;">Advanced Precision Instrument Cleaner · Micro-Contamination Control</span>
+              <h1>ZenNuc™<br>Micro</h1>
+              <p class="prod-hero-sub" style="color:#22d3ee;">Precision. Purity. Performance. Now Microsized.</p>
+              <p class="prod-hero-desc">Sub-micron contaminants and deep-seated microflora require a specialized approach. ZenNuc™ Micro introduces an advanced, micro-filtered decontamination matrix optimized for micro-surfaces, automated instrumentation, and medical laboratory gear.</p>
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary" id="micro-enquire-btn">Request Information</a>
+                <a href="contact.html" class="btn btn-outline-white" id="micro-quote-btn">Get a Quote</a>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;">
+              <img src="zennuc_micro.png" alt="ZenNuc™ Micro" loading="eager" style="width:100%;max-width:420px;height:auto;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 24px 64px rgba(0,0,0,0.5);">
+            </div>
+          </div>
+        </div>
+        <section class="section section-white">
+          <div class="container">
+            <div class="animate-on-scroll" style="text-align:center;margin-bottom:40px;"><img src="zennuc_micro.png" alt="ZenNuc™ Micro" loading="lazy" style="max-width:360px;width:100%;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);"></div>
+            <div class="section-heading animate-on-scroll"><h2>Product Description</h2><div class="section-divider"></div></div>
+            <p class="animate-on-scroll" style="font-family:var(--font-source);font-size:1rem;line-height:1.85;color:var(--clr-text-body);margin-bottom:40px;">Sub-micron contaminants and deep-seated microflora require a specialized approach that goes beyond standard cleaners. ZenNuc™ Micro introduces an advanced, micro-filtered decontamination matrix optimized for micro-surfaces, automated instrumentation, and medical laboratory gear. Specially treated to eliminate microscopic particulates, ZenNuc™ Micro breaks down persistent soilings and biological polymers at the molecular level.</p>
+            <div class="section-heading animate-on-scroll"><h2>Technical Specifications</h2><div class="section-divider"></div></div>
+            <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);" class="animate-on-scroll">
+              <table class="spec-table">
+                <thead><tr><th>Specification Metric</th><th>Product Parameter Details</th></tr></thead>
+                <tbody>
+                  <tr><td>System Format</td><td>High-Efficiency Microized Particulate-Free Fluid</td></tr>
+                  <tr><td>Net Volume</td><td>50 mL / 250 mL Specialized Dispensing Units</td></tr>
+                  <tr><td>Primary Function</td><td>Micro-surface and delicate instrumentation clearing</td></tr>
+                  <tr><td>Particulate Control</td><td>Multi-stage micro-filtered to eliminate sub-micron anomalies</td></tr>
+                  <tr><td>Regulatory Clearance</td><td>For Pharmaceutical, Medical, and Laboratory Use Only</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Elite Performance Features</h2><div class="section-divider"></div></div>
+            <div class="features-grid animate-on-scroll">
+              <div class="feature-card delay-1"><div class="feature-icon">🔬</div><h4>Microized Precision Cleansing</h4><p>Specially tuned to remove microscopic chemical residues and persistent proteins.</p></div>
+              <div class="feature-card delay-2"><div class="feature-icon">🛡️</div><h4>Material Protection Matrix</h4><p>Engineered safely for delicate glass, high-spec polymers, and non-corrosive alloys.</p></div>
+              <div class="feature-card delay-3"><div class="feature-icon">✅</div><h4>Particulate-Free Security</h4><p>Strictly processed to prevent the introduction of foreign sub-micron entities.</p></div>
+              <div class="feature-card delay-1"><div class="feature-icon">⬇️</div><h4>Deep Structural Penetration</h4><p>Loosens surface micro-soils embedded within tight structural tolerances.</p></div>
+            </div>
+            <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Fields of Application</h2><div class="section-divider"></div></div>
+            <div class="field-grid animate-on-scroll">
+              <div class="field-card"><h5>🔭 Precision Instrument Cleaning</h5><p>Decontamination of optical heads, clinical pipettes, and automated diagnostic modules.</p></div>
+              <div class="field-card"><h5>🧪 Medical Lab Maintenance</h5><p>Sanitization of high-fidelity analysis equipment and sensitive workspace substrates.</p></div>
+              <div class="field-card"><h5>💊 Pharmaceutical Production Lines</h5><p>Targeted spot-decontamination of internal machinery interfaces.</p></div>
+            </div>
+          </div>
+        </section>
+      </div><!-- /detail-micro -->
+
+      <!-- CTA Strip -->
+      <section class="section section-navy" aria-label="Product CTA">
+        <div class="container text-center animate-on-scroll">
+          <h2 style="font-family:var(--font-condensed);font-size:1.8rem;font-weight:700;color:white;margin-bottom:12px;">Ready to Protect Your Environment?</h2>
+          <p style="font-family:var(--font-source);color:rgba(255,255,255,0.65);margin-bottom:28px;font-size:0.95rem;">Contact Densukia International for technical documentation, pricing, and Certificate of Analysis for any ZenNuc™ product.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <a href="contact.html" class="btn btn-primary btn-lg" id="prod-cta-btn">Send Product Enquiry</a>
+            <a href="contact.html" class="btn btn-outline-white btn-lg" id="prod-cta-contact">Contact Our Team</a>
           </div>
         </div>
       </section>
 
-      <!-- FAQs -->
-      <section class="section section-white" id="deco-faq" aria-labelledby="faq-heading">
-        <div class="container">
-          <div class="section-heading animate-on-scroll">
-            <h2 id="faq-heading">Scientific FAQs</h2>
-            <div class="section-divider"></div>
-            <p>Technical answers to the most common laboratory enquiries about ZenNuc™ Deco.</p>
-          </div>
-          <div class="faq-list animate-on-scroll">
-            <div class="faq-item" id="faq-1"><div class="faq-question">What makes ZenNuc™ Deco more effective than standard single-bottle decontaminants?<div class="faq-icon">+</div></div><div class="faq-answer"><p>Single-bottle formulations suffer from continuous self-interaction of active ingredients, causing rapid shelf-degradation. ZenNuc™ Deco's dual-reagent system isolates Deco Meta and Deco Rox until the exact point of surface application, delivering a Cu²⁺-catalyzed Fenton-like reaction cascade with powerful hydroxyl radicals.</p></div></div>
-            <div class="faq-item" id="faq-2"><div class="faq-question">Is ZenNuc™ Deco safe on PCR instruments and sensitive analytical equipment?<div class="faq-icon">+</div></div><div class="faq-answer"><p>Yes. ZenNuc™ Deco is formulated as a non-corrosive system, safe on modern workspace polymers, glass, and alloy surfaces. Unlike traditional sodium hypochlorite-based cleaners, ZenNuc™ Deco is gentle on PCR machines, biosafety cabinets, laminar flow hoods, pipettes, glass manifolds, and synthetic workstations.</p></div></div>
-            <div class="faq-item" id="faq-3"><div class="faq-question">What is the required contact time for effective decontamination?<div class="faq-icon">+</div></div><div class="faq-answer"><p>The validated contact time is <strong>2 to 5 minutes</strong>. After applying Solution A followed immediately by Solution B, allow the mixture to remain on the surface undisturbed for this period. The visible faint blue-green tint provides optical confirmation that the catalytic reaction is actively proceeding.</p></div></div>
-            <div class="faq-item" id="faq-4"><div class="faq-question">What does the blue-green colour change indicate?<div class="faq-icon">+</div></div><div class="faq-answer"><p>The faint blue-green tint is a built-in visual activation indicator confirming the active degradation reaction is ongoing. It is generated by the copper-catalyzed peroxide cascade when Solution A and Solution B combine.</p></div></div>
-            <div class="faq-item" id="faq-5"><div class="faq-question">Does every batch come with a Certificate of Analysis (CoA)?<div class="faq-icon">+</div></div><div class="faq-answer"><p>Yes. Every batch of ZenNuc™ Deco undergoes extensive verification at our Mirjole M.I.D.C. manufacturing facility and is accompanied by a full Certificate of Analysis (CoA). This documentation supports GLP-compliant laboratory practices, audit trails, and regulatory submissions.</p></div></div>
-          </div>
-        </div>
-      </section>
-    </section>
+    </div><!-- /#products-detail -->
 
-    <!-- ======================================================= -->
-    <!-- PRODUCT: ZENNUC GRID                                    -->
-    <!-- ======================================================= -->
-    <section id="grid">
-      <div class="prod-hero" style="background:linear-gradient(135deg,#0f1f0f,#1a3a1a);">
-        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(15,31,15,0.97) 0%,rgba(15,31,15,0.75) 60%,rgba(15,31,15,0.4) 100%);"></div>
-        <div class="prod-hero-grid" style="position:relative;z-index:1;">
-          <div>
-            <span class="prod-hero-badge" style="color:#a3e635;">Industrial Floor Cleaning Solution · Heavy-Duty Performance</span>
-            <h1>ZenNuc™<br>Grid</h1>
-            <p class="prod-hero-sub" style="color:#4ade80;">Efficiency-Driven · Structural Authority</p>
-            <p class="prod-hero-desc">ZenNuc™ Grid is a specialized industrial floor cleaning solution engineered to harmonize advanced cleaning efficiency with heavy-duty structural performance. By bridging the gap between "peaceful efficiency" and "structured authority," the product offers a high-performance cleaning experience for demanding industrial environments.</p>
-            <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
-              <a href="contact.html" class="btn btn-primary" id="grid-enquire-btn">Request Information</a>
-              <a href="contact.html" class="btn btn-outline-white" id="grid-quote-btn">Get a Quote</a>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:center;">
-            <img src="zennuc_grid.png" alt="ZenNuc™ Grid — Industrial Floor Cleaning Solution" loading="eager" style="width:100%;max-width:480px;height:auto;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 24px 64px rgba(0,0,0,0.5);">
-          </div>
-        </div>
-      </div>
-
-      <!-- Product Description -->
-      <section class="section section-white">
-        <div class="container">
-          <div class="section-heading animate-on-scroll">
-            <h2>Product Description</h2>
-            <div class="section-divider"></div>
-          </div>
-          <div class="grid grid-gap-48 align-items-start">
-            <div class="col-6 col-lg-12 animate-on-scroll">
-              <img src="zennuc_grid.png" alt="ZenNuc™ Grid product" loading="lazy" style="width:100%;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);margin-bottom:24px;">
-              <p style="font-family:var(--font-source);font-size:1rem;line-height:1.8;color:var(--clr-text-body);">ZenNuc™ Grid is a specialized industrial floor cleaning solution engineered to harmonize advanced cleaning efficiency with heavy-duty structural performance. By bridging the gap between "peaceful efficiency" and "structured authority," the product offers a high-performance cleaning experience for demanding industrial environments.</p>
-            </div>
-            <div class="col-6 col-lg-12 animate-on-scroll">
-              <h3 style="font-family:var(--font-condensed);font-size:1.2rem;color:var(--clr-navy);margin-bottom:16px;">Market Application</h3>
-              <p style="font-family:var(--font-source);color:var(--clr-text-muted);margin-bottom:12px;">ZenNuc™ Grid is engineered specifically for the following sectors:</p>
-              <ul class="perf-list">
-                <li><span><strong>Industrial Facilities:</strong> Designed to withstand the rigors of high-traffic warehouse and factory floors.</span></li>
-                <li><span><strong>Large-Scale Sanitation:</strong> Provides an authoritative cleaning solution for environments requiring consistent, heavy-duty maintenance standards.</span></li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Performance Benefits -->
-          <div class="section-heading animate-on-scroll" style="margin-top:48px;">
-            <h2>Performance Benefits</h2>
-            <div class="section-divider"></div>
-          </div>
-          <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);" class="animate-on-scroll">
-            <table class="spec-table">
-              <thead>
-                <tr>
-                  <th>Feature</th>
-                  <th>Benefit</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Efficiency-Driven</td><td>Reduces downtime by optimizing cleaning speed.</td></tr>
-                <tr><td>Heavy-Duty Build</td><td>Handles industrial-grade grime and debris with structural reliability.</td></tr>
-                <tr><td>Streamlined Workflow</td><td>Integrates seamlessly into existing industrial maintenance protocols.</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <!-- ======================================================= -->
-    <!-- PRODUCT: ZENNUC AURA                                    -->
-    <!-- ======================================================= -->
-    <section id="aura" style="border-top:4px solid var(--clr-teal);">
-      <div class="prod-hero" style="background:linear-gradient(135deg,#0a2a35,#0e4a5e);">
-        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,42,53,0.97) 0%,rgba(10,42,53,0.75) 60%,rgba(10,42,53,0.4) 100%);"></div>
-        <div class="prod-hero-grid" style="position:relative;z-index:1;">
-          <div>
-            <span class="prod-hero-badge" style="color:#67e8f9;">Next-Generation Bio-Defense Hand Sanitizer · MNC-Grade Hygiene Standard</span>
-            <h1>ZenNuc™<br>Aura</h1>
-            <p class="prod-hero-sub" style="color:#22d3ee;">Ultra-Pure · Broad-Spectrum · Residue-Free</p>
-            <p class="prod-hero-desc">In clinical environments, commercial production zones, and high-traffic workspaces, hands serve as the primary vector for cross-contamination. ZenNuc™ Aura is engineered to meet the stringent demands of healthcare professionals and industrial operators alike — delivering ≥99.999% Bio-Burden Log Reduction within 15 seconds.</p>
-            <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
-              <a href="contact.html" class="btn btn-primary" id="aura-enquire-btn">Request Information</a>
-              <a href="contact.html" class="btn btn-outline-white" id="aura-quote-btn">Get a Quote</a>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:center;">
-            <img src="zennuc_aura.png" alt="ZenNuc™ Aura — Bio-Defense Hand Sanitizer" loading="eager" style="width:100%;max-width:420px;height:auto;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 24px 64px rgba(0,0,0,0.5);">
-          </div>
-        </div>
-      </div>
-
-      <section class="section section-white">
-        <div class="container">
-
-          <!-- Product Image -->
-          <div class="animate-on-scroll" style="text-align:center;margin-bottom:40px;">
-            <img src="zennuc_aura.png" alt="ZenNuc™ Aura Hand Sanitizer" loading="lazy" style="max-width:360px;width:100%;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);">
-          </div>
-
-          <!-- Technical Specifications -->
-          <div class="section-heading animate-on-scroll">
-            <h2>Technical Specifications</h2>
-            <div class="section-divider"></div>
-          </div>
-          <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);" class="animate-on-scroll">
-            <table class="spec-table">
-              <thead><tr><th>Specification Metric</th><th>Product Parameter Details</th></tr></thead>
-              <tbody>
-                <tr><td>System Format</td><td>Ready-to-Use (RTU) Dispensing Matrix</td></tr>
-                <tr><td>Net Volume</td><td>500 mL Ergonomic Spray / Pump Unit</td></tr>
-                <tr><td>Efficacy Profile</td><td>≥ 99.999% Bio-Burden Log Reduction within 15 seconds</td></tr>
-                <tr><td>Dermal Compatibility</td><td>Infused with Pharmaceutical-Grade Humectants &amp; Lipid Restorers</td></tr>
-                <tr><td>Residue Index</td><td>100% Volatile; Zero sticky film or post-drying tackiness</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Elite Performance Features -->
-          <div class="section-heading animate-on-scroll" style="margin-top:48px;">
-            <h2>Elite Performance Features</h2>
-            <div class="section-divider"></div>
-          </div>
-          <div class="features-grid animate-on-scroll">
-            <div class="feature-card delay-1"><div class="feature-icon">🦠</div><h4>Broad-Spectrum Efficacy</h4><p>Achieves rapid log-reduction against an extensive biological grid of transient microflora, enveloped viruses, and fungi.</p></div>
-            <div class="feature-card delay-2"><div class="feature-icon">🛡️</div><h4>Advanced Dermal Shield</h4><p>Actively preserves skin moisture barriers to prevent occupational contact dermatitis during high-frequency use.</p></div>
-            <div class="feature-card delay-3"><div class="feature-icon">⚡</div><h4>Residue-Free Fast Drying</h4><p>Evaporates cleanly to allow immediate and seamless donning of gloves — zero downtime for healthcare professionals.</p></div>
-            <div class="feature-card delay-1"><div class="feature-icon">✅</div><h4>SOP-Validated Purity</h4><p>Completely free from artificial fragrances, dyes, and harsh common allergens — validated for sensitive clinical environments.</p></div>
-          </div>
-
-          <!-- Fields of Application -->
-          <div class="section-heading animate-on-scroll" style="margin-top:48px;">
-            <h2>Fields of Application</h2>
-            <div class="section-divider"></div>
-          </div>
-          <div class="field-grid animate-on-scroll">
-            <div class="field-card"><h5>🏥 Clinical &amp; Healthcare Facilities</h5><p>Pre-procedural hand antisepsis in diagnostic labs, clean zones, and critical care units.</p></div>
-            <div class="field-card"><h5>🔬 Cleanrooms &amp; Controlled Environments</h5><p>Essential hand hygiene protocols prior to gowning in ISO-certified manufacturing environments.</p></div>
-            <div class="field-card"><h5>🍽️ Pharmaceutical &amp; Food Processing</h5><p>Critical intervention points to maintain strict bio-burden control on active processing lines.</p></div>
-            <div class="field-card"><h5>🏢 Corporate Infrastructure</h5><p>Enterprise-wide high-frequency deployment to safeguard workspace health and operational continuity.</p></div>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <!-- ======================================================= -->
-    <!-- PRODUCT: ZENNUC HYPO                                    -->
-    <!-- ======================================================= -->
-    <section id="hypo" style="border-top:4px solid var(--clr-blue-corp);">
-      <div class="prod-hero" style="background:linear-gradient(135deg,#0a1628,#0e2244);">
-        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,22,40,0.97) 0%,rgba(10,22,40,0.75) 60%,rgba(10,22,40,0.4) 100%);"></div>
-        <div class="prod-hero-grid" style="position:relative;z-index:1;">
-          <div>
-            <span class="prod-hero-badge" style="color:#93c5fd;">High-Purity Disinfection &amp; Oxidation Matrix · Advanced Biofilm Eradication</span>
-            <h1>ZenNuc™<br>Hypo</h1>
-            <p class="prod-hero-sub" style="color:#60a5fa;">Stabilized · High-Velocity · Broad-Spectrum</p>
-            <p class="prod-hero-desc">Microbial biofilms, organic impurities, and persistent viral strains pose an ongoing challenge to industrial sanitation, clinical environments, and water management systems. ZenNuc™ Hypo represents the gold standard in high-purity, stabilized hypochlorite technology — maintaining an exceptional free available chlorine profile via a powerful oxidative pathway.</p>
-            <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
-              <a href="contact.html" class="btn btn-primary" id="hypo-enquire-btn">Request Information</a>
-              <a href="contact.html" class="btn btn-outline-white" id="hypo-quote-btn">Get a Quote</a>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:center;">
-            <img src="zennuc_hypo.png" alt="ZenNuc™ Hypo — High-Purity Disinfection Matrix" loading="eager" style="width:100%;max-width:420px;height:auto;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 24px 64px rgba(0,0,0,0.5);">
-          </div>
-        </div>
-      </div>
-
-      <section class="section section-white">
-        <div class="container">
-
-          <!-- Product Image -->
-          <div class="animate-on-scroll" style="text-align:center;margin-bottom:40px;">
-            <img src="zennuc_hypo.png" alt="ZenNuc™ Hypo Disinfection Solution" loading="lazy" style="max-width:360px;width:100%;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);">
-          </div>
-
-          <!-- Technical Specifications -->
-          <div class="section-heading animate-on-scroll">
-            <h2>Technical Specifications</h2>
-            <div class="section-divider"></div>
-          </div>
-          <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);" class="animate-on-scroll">
-            <table class="spec-table">
-              <thead><tr><th>Specification Metric</th><th>Product Parameter Details</th></tr></thead>
-              <tbody>
-                <tr><td>System Format</td><td>Stabilized Liquid Concentrate</td></tr>
-                <tr><td>Net Volume</td><td>1000 mL Heavy-Duty Shaded Container</td></tr>
-                <tr><td>Primary Mechanism</td><td>High-velocity hypochlorite oxidative cascade</td></tr>
-                <tr><td>Biofilm Penetration</td><td>Active shearing of Extracellular Polymeric Substances (EPS)</td></tr>
-                <tr><td>Storage Protocol</td><td>Ambient room temperature; store in original shaded container</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Elite Performance Features -->
-          <div class="section-heading animate-on-scroll" style="margin-top:48px;">
-            <h2>Elite Performance Features</h2>
-            <div class="section-divider"></div>
-          </div>
-          <div class="features-grid animate-on-scroll">
-            <div class="feature-card delay-1"><div class="feature-icon">⚡</div><h4>Stabilized Oxidative Power</h4><p>Formulated to resist thermal and photolytic breakdown, ensuring reliable active chlorine PPM delivery at point of use.</p></div>
-            <div class="feature-card delay-2"><div class="feature-icon">🔬</div><h4>Deep Biofilm Penetration</h4><p>Shears through protective layer structures to fully neutralize embedded bacterial colonies via EPS disruption.</p></div>
-            <div class="feature-card delay-3"><div class="feature-icon">🦠</div><h4>Broad-Spectrum Efficacy</h4><p>Delivers high-level disinfection against vegetative bacteria, viral particles, and fungal spores.</p></div>
-            <div class="feature-card delay-1"><div class="feature-icon">✅</div><h4>Clean Surface Performance</h4><p>Formulated to optimize surface wetting and maximize biocidal impact across all infrastructure materials.</p></div>
-          </div>
-
-          <!-- Fields of Application -->
-          <div class="section-heading animate-on-scroll" style="margin-top:48px;">
-            <h2>Fields of Application</h2>
-            <div class="section-divider"></div>
-          </div>
-          <div class="field-grid animate-on-scroll">
-            <div class="field-card"><h5>💧 Advanced Water Treatment</h5><p>Bio-fouling control, algae mitigation, and continuous disinfection in industrial cooling loops and process water systems.</p></div>
-            <div class="field-card"><h5>🏭 Hard Surface Decontamination</h5><p>Deep sanitization of floors, structural walls, and manufacturing equipment in production facilities.</p></div>
-            <div class="field-card"><h5>🔧 Clean-in-Place (CIP) Systems</h5><p>Disinfection of internal pipelines, high-capacity holding vessels, and automated filling loops.</p></div>
-            <div class="field-card"><h5>🌿 Environmental Bio-Burden Control</h5><p>Rapid containment and absolute neutralization of large-scale environmental biological spills.</p></div>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <!-- ======================================================= -->
-    <!-- PRODUCT: ZENNUC IPA                                     -->
-    <!-- ======================================================= -->
-    <section id="ipa" style="border-top:4px solid #f0c040;">
-      <div class="prod-hero" style="background:linear-gradient(135deg,#1a1400,#3a2e00);">
-        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(26,20,0,0.97) 0%,rgba(26,20,0,0.75) 60%,rgba(26,20,0,0.4) 100%);"></div>
-        <div class="prod-hero-grid" style="position:relative;z-index:1;">
-          <div>
-            <span class="prod-hero-badge" style="color:#fde68a;">High-Purity 70% Isopropanol Solution · Premium Surface Sterilization System</span>
-            <h1>ZenNuc™<br>IPA</h1>
-            <p class="prod-hero-sub" style="color:#fbbf24;">Precision. Purity. Performance.</p>
-            <p class="prod-hero-desc">An ultra-pure, ultra-filtered isopropyl alcohol formulation for rapid, residue-free microbial kill on hard surfaces. High-velocity denaturation of microbial proteins strips away lipid envelopes and neutralizes a wide biological grid of microscopic threats, drying instantly without streaks.</p>
-            <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
-              <a href="contact.html" class="btn btn-primary" id="ipa-enquire-btn">Request Information</a>
-              <a href="contact.html" class="btn btn-outline-white" id="ipa-quote-btn">Get a Quote</a>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:center;">
-            <img src="zennuc_ipa.png" alt="ZenNuc™ IPA — High-Purity Isopropanol Sterilization" loading="eager" style="width:100%;max-width:420px;height:auto;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 24px 64px rgba(0,0,0,0.5);">
-          </div>
-        </div>
-      </div>
-
-      <section class="section section-white">
-        <div class="container">
-          <div class="animate-on-scroll" style="text-align:center;margin-bottom:40px;">
-            <img src="zennuc_ipa.png" alt="ZenNuc™ IPA product" loading="lazy" style="max-width:360px;width:100%;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);">
-          </div>
-          <div class="section-heading animate-on-scroll"><h2>Product Description</h2><div class="section-divider"></div></div>
-          <p class="animate-on-scroll" style="font-family:var(--font-source);font-size:1rem;line-height:1.85;color:var(--clr-text-body);margin-bottom:40px;">Controlled manufacturing areas, medical equipment surfaces, and high-purity laboratory workstations require relentless sterilization protocols to keep ambient bio-burdens at zero. ZenNuc™ IPA is an ultra-pure, ultra-filtered isopropyl alcohol formulation developed to perform rapid, residue-free microbial kill on hard surfaces. By utilizing high-velocity denaturation of microbial proteins, it strips away lipid envelopes and neutralizes a wide biological grid of microscopic threats, drying instantly without streaks or chemical residue.</p>
-          <div class="section-heading animate-on-scroll"><h2>Technical Specifications</h2><div class="section-divider"></div></div>
-          <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);" class="animate-on-scroll">
-            <table class="spec-table">
-              <thead><tr><th>Specification Metric</th><th>Product Parameter Details</th></tr></thead>
-              <tbody>
-                <tr><td>System Format</td><td>High-Purity 70% Isopropanol Sterilization Fluid</td></tr>
-                <tr><td>Net Volume</td><td>250 mL Precision Fine-Mist Spray Unit</td></tr>
-                <tr><td>Primary Mechanism</td><td>Cellular dehydration and rapid protein denaturation kinetics</td></tr>
-                <tr><td>Evaporation Index</td><td>Fast-drying formula; 100% volatile with zero film formation</td></tr>
-                <tr><td>Validation Standard</td><td>Certified for ISO Cleanrooms &amp; GLP-regulated environments</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Elite Performance Features</h2><div class="section-divider"></div></div>
-          <div class="features-grid animate-on-scroll">
-            <div class="feature-card delay-1"><div class="feature-icon">⚡</div><h4>Instant Structural Kill</h4><p>Actively disrupts cell wall integrity for fast, high-efficiency sterilization.</p></div>
-            <div class="feature-card delay-2"><div class="feature-icon">✨</div><h4>Streak-Free Volatility</h4><p>Leaves absolutely no chemical residue, allowing safe processing of delicate optics.</p></div>
-            <div class="feature-card delay-3"><div class="feature-icon">💧</div><h4>Optimized Wetting Properties</h4><p>Spreads evenly across metallic, polymer, and glass cleanroom infrastructure.</p></div>
-            <div class="feature-card delay-1"><div class="feature-icon">🔌</div><h4>Electronic Compatibility</h4><p>Highly effective for deep cleaning sensitive clean-room equipment and tools.</p></div>
-          </div>
-          <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Fields of Application</h2><div class="section-divider"></div></div>
-          <div class="field-grid animate-on-scroll">
-            <div class="field-card"><h5>🔧 Cleanroom Tool Maintenance</h5><p>Pre-and-post run sanitization of structural instrumentation and mechanical assemblies.</p></div>
-            <div class="field-card"><h5>🏭 Hard Surface Decontamination</h5><p>Spray application over workbench tables, stainless steel panels, and transfer hatches.</p></div>
-            <div class="field-card"><h5>🧤 Glove and Gown Protocols</h5><p>Supplemental spray step during progression through cleanroom anterooms.</p></div>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <!-- ======================================================= -->
-    <!-- PRODUCT: ZENNUC MICRO                                   -->
-    <!-- ======================================================= -->
-    <section id="micro" style="border-top:4px solid var(--clr-teal);">
-      <div class="prod-hero" style="background:linear-gradient(135deg,#001a2e,#002d4a);">
-        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,26,46,0.97) 0%,rgba(0,26,46,0.75) 60%,rgba(0,26,46,0.4) 100%);"></div>
-        <div class="prod-hero-grid" style="position:relative;z-index:1;">
-          <div>
-            <span class="prod-hero-badge" style="color:#67e8f9;">Advanced Precision Instrument Cleaner · Micro-Contamination Control</span>
-            <h1>ZenNuc™<br>Micro</h1>
-            <p class="prod-hero-sub" style="color:#22d3ee;">Precision. Purity. Performance. Now Microsized.</p>
-            <p class="prod-hero-desc">Sub-micron contaminants and deep-seated microflora require a specialized approach that goes beyond standard cleaners. ZenNuc™ Micro introduces an advanced, micro-filtered decontamination matrix optimized for micro-surfaces, automated instrumentation, and medical laboratory gear.</p>
-            <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
-              <a href="contact.html" class="btn btn-primary" id="micro-enquire-btn">Request Information</a>
-              <a href="contact.html" class="btn btn-outline-white" id="micro-quote-btn">Get a Quote</a>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:center;">
-            <img src="zennuc_micro.png" alt="ZenNuc™ Micro — Precision Instrument Cleaner" loading="eager" style="width:100%;max-width:420px;height:auto;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 24px 64px rgba(0,0,0,0.5);">
-          </div>
-        </div>
-      </div>
-
-      <section class="section section-white">
-        <div class="container">
-          <div class="animate-on-scroll" style="text-align:center;margin-bottom:40px;">
-            <img src="zennuc_micro.png" alt="ZenNuc™ Micro product" loading="lazy" style="max-width:360px;width:100%;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);">
-          </div>
-          <div class="section-heading animate-on-scroll"><h2>Product Description</h2><div class="section-divider"></div></div>
-          <p class="animate-on-scroll" style="font-family:var(--font-source);font-size:1rem;line-height:1.85;color:var(--clr-text-body);margin-bottom:40px;">Sub-micron contaminants and deep-seated microflora require a specialized approach that goes beyond standard cleaners. ZenNuc™ Micro introduces an advanced, micro-filtered decontamination matrix optimized for micro-surfaces, automated instrumentation, and medical laboratory gear. Specially treated to eliminate microscopic particulates, ZenNuc™ Micro breaks down persistent soilings and biological polymers at the molecular level, delivering absolute, micron-level surface purification without degrading critical equipment elements.</p>
-          <div class="section-heading animate-on-scroll"><h2>Technical Specifications</h2><div class="section-divider"></div></div>
-          <div style="border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);" class="animate-on-scroll">
-            <table class="spec-table">
-              <thead><tr><th>Specification Metric</th><th>Product Parameter Details</th></tr></thead>
-              <tbody>
-                <tr><td>System Format</td><td>High-Efficiency Microized Particulate-Free Fluid</td></tr>
-                <tr><td>Net Volume</td><td>50 mL / 250 mL Specialized Dispensing Units</td></tr>
-                <tr><td>Primary Function</td><td>Micro-surface and delicate instrumentation clearing</td></tr>
-                <tr><td>Particulate Control</td><td>Multi-stage micro-filtered to eliminate sub-micron anomalies</td></tr>
-                <tr><td>Regulatory Clearance</td><td>For Pharmaceutical, Medical, and Laboratory Use Only</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Elite Performance Features</h2><div class="section-divider"></div></div>
-          <div class="features-grid animate-on-scroll">
-            <div class="feature-card delay-1"><div class="feature-icon">🔬</div><h4>Microized Precision Cleansing</h4><p>Specially tuned to remove microscopic chemical residues and persistent proteins.</p></div>
-            <div class="feature-card delay-2"><div class="feature-icon">🛡️</div><h4>Material Protection Matrix</h4><p>Engineered safely for delicate glass, high-spec polymers, and non-corrosive alloys.</p></div>
-            <div class="feature-card delay-3"><div class="feature-icon">✅</div><h4>Particulate-Free Security</h4><p>Strictly processed to prevent the introduction of foreign sub-micron entities.</p></div>
-            <div class="feature-card delay-1"><div class="feature-icon">⬇️</div><h4>Deep Structural Penetration</h4><p>Loosens surface micro-soils embedded within tight structural tolerances.</p></div>
-          </div>
-          <div class="section-heading animate-on-scroll" style="margin-top:48px;"><h2>Fields of Application</h2><div class="section-divider"></div></div>
-          <div class="field-grid animate-on-scroll">
-            <div class="field-card"><h5>🔭 Precision Instrument Cleaning</h5><p>Decontamination of optical heads, clinical pipettes, and automated diagnostic modules.</p></div>
-            <div class="field-card"><h5>🧪 Medical Lab Maintenance</h5><p>Sanitization of high-fidelity analysis equipment and sensitive workspace substrates.</p></div>
-            <div class="field-card"><h5>💊 Pharmaceutical Production Lines</h5><p>Targeted spot-decontamination of internal machinery interfaces.</p></div>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <!-- CTA STRIP -->
-    <section class="section section-navy" aria-label="Product CTA">
-      <div class="container text-center animate-on-scroll">
-        <h2 style="font-family:var(--font-condensed);font-size:1.8rem;font-weight:700;color:white;margin-bottom:12px;">Ready to Protect Your Environment?</h2>
-        <p style="font-family:var(--font-source);color:rgba(255,255,255,0.65);margin-bottom:28px;font-size:0.95rem;">Contact Densukia International for technical documentation, pricing, and Certificate of Analysis for any ZenNuc™ product.</p>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-          <a href="contact.html" class="btn btn-primary btn-lg" id="prod-cta-btn">Send Product Enquiry</a>
-          <a href="contact.html" class="btn btn-outline-white btn-lg" id="prod-cta-contact">Contact Our Team</a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- FOOTER -->
@@ -737,7 +763,14 @@
         <p style="margin-top:10px;font-size:0.75rem;color:rgba(255,255,255,0.3);">CONFIDENTIAL &amp; PROPRIETARY</p>
       </div>
       <nav class="footer-col"><h5>Quick Links</h5><a href="index.html">Home</a><a href="about.html">About Us</a><a href="product.html">Products</a><a href="contact.html">Contact Us</a></nav>
-      <nav class="footer-col"><h5>Products</h5><a href="#deco">ZenNuc™ Deco</a><a href="#grid">ZenNuc™ Grid</a><a href="#aura">ZenNuc™ Aura</a><a href="#hypo">ZenNuc™ Hypo</a><a href="#ipa">ZenNuc™ IPA</a><a href="#micro">ZenNuc™ Micro</a></nav>
+      <nav class="footer-col"><h5>Products</h5>
+        <a href="#" onclick="showProduct('deco');return false;">ZenNuc™ Deco</a>
+        <a href="#" onclick="showProduct('grid');return false;">ZenNuc™ Grid</a>
+        <a href="#" onclick="showProduct('aura');return false;">ZenNuc™ Aura</a>
+        <a href="#" onclick="showProduct('hypo');return false;">ZenNuc™ Hypo</a>
+        <a href="#" onclick="showProduct('ipa');return false;">ZenNuc™ IPA</a>
+        <a href="#" onclick="showProduct('micro');return false;">ZenNuc™ Micro</a>
+      </nav>
       <div class="footer-col">
         <h5>Contact Us</h5>
         <p><strong style="color:white;">Sales Team</strong><br>Densukia International</p>
@@ -746,7 +779,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2024 Densukia International OPC Pvt. Ltd. All rights reserved.</span>
+      <span>&copy; 2024 Densukia International OPC Pvt. Ltd. All rights reserved.</span>
       <span>ZenNuc™ is a trademark of Densukia International OPC Pvt. Ltd.</span>
     </div>
   </footer>
@@ -755,6 +788,48 @@
     <a href="https://wa.me/91XXXXXXXXXX?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20ZenNuc%E2%84%A2%20products." class="fab fab-whatsapp" target="_blank" rel="noopener noreferrer">💬<span class="fab-tooltip">Chat with Our Team</span></a>
     <a href="contact.html" class="fab fab-call">📞<span class="fab-tooltip">Contact Us</span></a>
   </div>
+
   <script src="main.js"></script>
+  <script>
+    var catalogue  = document.getElementById('products-catalogue');
+    var detailView = document.getElementById('products-detail');
+    var backBarName = document.getElementById('back-bar-product-name');
+    var productNames = { deco:'ZenNuc™ Deco', grid:'ZenNuc™ Grid', aura:'ZenNuc™ Aura', hypo:'ZenNuc™ Hypo', ipa:'ZenNuc™ IPA', micro:'ZenNuc™ Micro' };
+
+    function showProduct(id) {
+      document.querySelectorAll('.product-detail-panel').forEach(function(p){ p.classList.remove('active'); });
+      var panel = document.getElementById('detail-' + id);
+      if (!panel) return;
+      panel.classList.add('active');
+      catalogue.style.display = 'none';
+      detailView.classList.add('visible');
+      backBarName.textContent = productNames[id] || id;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      triggerScrollAnimations();
+    }
+
+    function showCatalogue() {
+      detailView.classList.remove('visible');
+      catalogue.style.display = '';
+      document.querySelectorAll('.product-detail-panel').forEach(function(p){ p.classList.remove('active'); });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleHash() {
+      var hash = window.location.hash.replace('#', '');
+      if (hash && productNames[hash]) { showProduct(hash); }
+    }
+    window.addEventListener('load', handleHash);
+    window.addEventListener('hashchange', handleHash);
+
+    function triggerScrollAnimations() {
+      var els = document.querySelectorAll('.animate-on-scroll');
+      if (!('IntersectionObserver' in window)) { els.forEach(function(el){ el.classList.add('is-visible'); }); return; }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      els.forEach(function(el){ el.classList.remove('is-visible'); io.observe(el); });
+    }
+  </script>
 </body>
 </html>
