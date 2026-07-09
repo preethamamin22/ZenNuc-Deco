@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block sensitive/admin paths
+Disallow: /upload.html
+Disallow: /server.js
+Disallow: /.git/
+Disallow: /node_modules/
+
+Sitemap: https://zennuc.com/sitemap.xml
